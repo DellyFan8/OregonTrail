@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Declaring Prototype Map">
+    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Fixing capitalisation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ElliottIsBetter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Person.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680039168536</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removing unimportant files, merging aaron's work with stuff i forgot to commit, and started a list of short to do in main.">
+      <created>1680092723475</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680092723475</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixing capitalisation">
+      <created>1680092932724</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680092932724</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +146,8 @@
     <MESSAGE value="doing intro, names, date to leave added. needs store. also added date from day thing" />
     <MESSAGE value="Previous commit destroyed some work, I think this fixes it." />
     <MESSAGE value="Declaring Prototype Map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Declaring Prototype Map" />
+    <MESSAGE value="Removing unimportant files, merging aaron's work with stuff i forgot to commit, and started a list of short to do in main." />
+    <MESSAGE value="Fixing capitalisation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing capitalisation" />
   </component>
 </project>

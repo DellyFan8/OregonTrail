@@ -16,6 +16,10 @@ public class Person {
         this.gender = gender;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Person{" +

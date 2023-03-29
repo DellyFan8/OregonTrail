@@ -15,8 +15,6 @@ public class Main {
     //koo's store
     public static void main(String[] args) {
         out.println("Hello World!");
-        //Select Career here! Elliot can do at some point
-        inventory = new Inventory(500);
         List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
         Random random = new Random();
         party = new ArrayList<Person>();
@@ -36,13 +34,25 @@ public class Main {
             names = name.get(namepos);
             out.println(names);
             age = random.nextInt(20);
-            if (namepos<=20)
-            party.add(new Person(age,names,40, Person.Gender.MALE ));
-              else
-            party.add(new Person(age,names,40, Person.Gender.FEMALE ));
+            if (namepos<=20) {
+                party.add(new Person(age,names,40, Person.Gender.MALE ));
+            }
+              else {
+                party.add(new Person(age,names,40, Person.Gender.FEMALE ));
+            }
         }
         boolean cool = keyboardyn("Is this okay? (y/n)");
         if(!cool){out.println("This is MVP, I truly do not care.");}
+
+        out.println(party.get(0).getName()+"'s Career?");
+        out.println("1.) Banker");
+        out.println("2.) Carpenter ");
+        out.println("3.) Farmer");
+        int input=keyboard.nextInt();
+        //you happy aaron
+        int startcash = (input == 1)? 1600:(input==2)? 800:(input==3)?400:1600;
+        //women's career?
+        inventory = new Inventory(startcash);
         out.println("What month do you wish to leave?");
         out.println("1.) March");
         out.println("2.) April");
@@ -50,9 +60,9 @@ public class Main {
         out.println("4.) June");
         out.println("5.) July");
         keyboard = new Scanner(System.in);
-        int month = keyboard.nextInt();
+        input = keyboard.nextInt();
         int day=0;
-        switch (month){
+        switch (input){
             case 5:
                 day+=30;
             case 4:
