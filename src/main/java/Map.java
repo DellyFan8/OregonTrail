@@ -82,11 +82,14 @@ public class Map {
         }
     public void dayDisplay(int distanceTravelled){
 //display day related information every time a day advances
+        //record names of places entered, rivers crossed etc
            out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we dont get "April 1st day 0:"
            out.println("Today you travelled "+ distanceTravelled+" miles.");
-           out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
-           out.println("Daily log of injuries, illnesses, events, etc. goes here");
 
+           if (distanceto()==0){out.println("You crossed the "+closestloc().getLocationName().substring(0,closestloc().getLocationName().length()-9)+".");}
+           else out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
+
+           out.println("Daily log of injuries, illnesses, events, etc. goes here");
 
     }
     public void RandomEvent() {

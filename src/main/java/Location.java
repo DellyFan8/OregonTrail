@@ -48,10 +48,17 @@ public class Location {
     public boolean hasStore(){
         return(store!=null);
     }
+    public boolean hasEvent(){
+        return(event!=null);
+    }
 
     //getters and setters
     public int getMilesinfromstart() {
         return milesinfromstart;
+    }
+
+    public Event getEvent() {
+        return event;
     }
 
     public void setMilesinfromstart(int milesinfromstart) {
@@ -139,7 +146,22 @@ public class Location {
             }
         }
     }
-
+//public void eventStoreHandler(Location eventLocation, int optionNum){
+//
+//
+//    if (eventLocation.hasStore()){
+//        //It looks like this is always -1
+//        int townOption=-1;
+//
+//        out.println(optionNum+".) Go into town");
+//        townOption = optionNum;
+//        optionNum++;
+//
+//    }
+//    if (eventLocation.getEvent().getEventType()== Event.EventType.RIVERCROSSING){
+//        if(eventLocation.getEvent().riverEvent(eventLocation)){}
+//    }
+//}
 
     @Override
     public String toString() {

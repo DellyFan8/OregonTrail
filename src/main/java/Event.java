@@ -1,3 +1,7 @@
+import java.util.Random;
+
+import static java.lang.System.out;
+
 public class Event {
 
     public enum EventType{RIVERCROSSING,ENDOFPROTYPE,  XYZ}
@@ -11,9 +15,10 @@ public class Event {
     // check what event and/or location() are here.
 
     //Started on this but wanted to check with aaron to see if he agrees event is the best location to deal with this stuff
-    public boolean eventHandler(Location eventLocation){
-       // if (eventLocation.)
-        return true;
+
+
+    public EventType getEventType() {
+        return eventType;
     }
 
     @Override
@@ -22,10 +27,5 @@ public class Event {
                 "eventType=" + eventType +
                 '}';
     }
-    public boolean riverEvent(Location eventLocation){
 
-
-
-        return true;
-    }
 }

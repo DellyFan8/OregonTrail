@@ -83,11 +83,6 @@ public class Main {
 
         oregonTrail = new Map(runnerLocations,day);
 
-
-
-
-
-
         out.println("You need to go shopping before you can depart.");
         if(oregonTrail.closestloc().hasStore()){
             oregonTrail.closestloc().goShopping();
@@ -109,7 +104,7 @@ public class Main {
             while(menu==true){
                 out.println("1.) View Party\n2.) View Inventory");
                 int optionNum = 3;
-                if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0){
+                if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0&&oregonTrail.closestloc().hasStore()){
                     out.println(optionNum+".) Go into town");
                     townOption = optionNum;
                     optionNum++;
@@ -128,6 +123,9 @@ public class Main {
                     oregonTrail.closestloc().goIntoLocation();
                 else if(option == advanceOption){
                     menu = false;
+                    if(oregonTrail.closestloc().getEvent().getEventType()==Event.EventType.RIVERCROSSING) {
+                        riverEvent(oregonTrail.closestloc());
+                    }
                 }
                 else{
                     out.println("Please select something that is an option");
@@ -156,5 +154,22 @@ public class Main {
         return answer;
 
     }
-
+    public static void riverEvent(Location eventLocation){
+        //insert chances and effects for crossing river, may need to be passed inventory
+        Random rand = new Random();
+        out.println("You find yourself at "+eventLocation.getLocationName()+".");
+        String river =eventLocation.getLocationName();
+        river= river.substring(0, river.length()-9);
+        switch (rand.nextInt(5)) {
+            case 1:
+                out.println("you lost some items: Insert items lost here");
+                break;
+            case 2:
+                out.println("you should've died. but we haven't implemented death yet");
+                break;
+            default:
+                out.println("you successfully crossed the "+river+".");
+                break;
+        }
+    }
 }
