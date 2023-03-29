@@ -12,7 +12,7 @@ public class Main {
 //Needs:
     //River crossings
     //Career select
-    //koo's store
+
     public static void main(String[] args) {
         out.println("Hello World!");
         List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
@@ -43,12 +43,9 @@ public class Main {
         }
         boolean cool = keyboardyn("Is this okay? (y/n)");
         if(!cool){out.println("This is MVP, I truly do not care.");}
-
-        out.println(party.get(0).getName()+"'s Career?");
-        out.println("1.) Banker");
-        out.println("2.) Carpenter ");
-        out.println("3.) Farmer");
-        int input=keyboard.nextInt();
+        Scanner keyboard = new Scanner(System.in);
+        out.println(party.get(0).getName()+"'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer");
+        int input = keyboard.nextInt();
         //you happy aaron
         int startcash = (input == 1)? 1600:(input==2)? 800:(input==3)?400:1600;
         //women's career?
@@ -113,7 +110,7 @@ public class Main {
             int townOption = -1;
             int advanceOption = -1;
             out.println("Traveling the trail...");
-            oregonTrail.AdvanceDay();
+            oregonTrail.advanceDay();
             if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())<oregonTrail.dailyDistanceTraveled()){
                 out.println("Welcome to "+oregonTrail.closestloc().getLocationName());
             }

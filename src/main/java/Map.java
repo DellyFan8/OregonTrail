@@ -61,7 +61,7 @@ public class Map {
         }
 
 
-        public void AdvanceDay() {
+        public void advanceDay() {
             int dist = dailyDistanceTraveled();
             playerdistance += dist;
             daynumber++;
