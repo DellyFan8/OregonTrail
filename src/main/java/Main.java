@@ -155,7 +155,7 @@ public class Main {
         do {
             out.println(output);
             answer = keyboard.nextInt();
-        }while (answer >=upperbound);
+        }while (!(answer <=upperbound));
         return answer;
 
     }
