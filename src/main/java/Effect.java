@@ -8,12 +8,12 @@ public class Effect {
             return health;
         }
         else if (Objects.equals(type, "measles")) {
-            System.out.println(Enum + " got measles!");
+            System.out.println(Enum + " got measles.");
             health = health - 20;
             return health;
         }
         else {
-            System.out.println(Enum + " got dysentery!");
+            System.out.println(Enum + " got dysentery.");
             health = health - 20;
             return health;
         }

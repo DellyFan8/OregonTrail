@@ -92,6 +92,10 @@ public class Map {
            if (distanceto()==0){out.println("You crossed the "+closestloc().getLocationName().substring(0,closestloc().getLocationName().length()-9)+".");}
            else out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
 
+           // work in progress still, got confused
+           //for (int i = 0; i < Main.party.size(); i++) {
+
+          // }
            out.println("Daily log of injuries, illnesses, events, etc. goes here");
 
     }
