@@ -98,6 +98,7 @@ public class Main {
     }
 
     public static void playGame(){
+        Scanner keyboard = new Scanner(System.in);
         boolean keepGoing = true;
         while(keepGoing){
             int townOption = -1;
@@ -151,13 +152,10 @@ public class Main {
     static int intinput(String output, int upperbound){
         Scanner keyboard = new Scanner(System.in);
         int answer;
-
         do {
             out.println(output);
             answer = keyboard.nextInt();
-
-        }while (answer <=upperbound);
-
+        }while (answer >=upperbound);
         return answer;
 
     }
