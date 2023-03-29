@@ -65,14 +65,14 @@ public class Map {
             int dist = dailyDistanceTraveled();
             playerdistance += dist;
             daynumber++;
-            DayDisplay(dist);
+            dayDisplay(dist);
         }
         public int dailyDistanceTraveled(){
             //for testing will be 20, however at some point will need to handle distance calulation
             //may need to be passed information
             return 20;
         }
-    public void DayDisplay(int distanceTravelled){
+    public void dayDisplay(int distanceTravelled){
 //display day related information every time a day advances
            out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we dont get "April 1st day 0:"
            out.println("Today you travelled "+ distanceTravelled+" miles.");
