@@ -43,21 +43,14 @@ public class Main {
         }
         boolean cool = keyboardyn("Is this okay? (y/n)");
         if(!cool){out.println("This is MVP, I truly do not care.");}
-        Scanner keyboard = new Scanner(System.in);
-        out.println(party.get(0).getName()+"'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer");
-        int input = keyboard.nextInt();
+
+        int input =intinput(party.get(0).getName()+"'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer",3);
         //you happy aaron
         int startcash = (input == 1)? 1600:(input==2)? 800:(input==3)?400:1600;
         //women's career?
         inventory = new Inventory(startcash);
         out.println("What month do you wish to leave?");
-        out.println("1.) March");
-        out.println("2.) April");
-        out.println("3.) May");
-        out.println("4.) June");
-        out.println("5.) July");
-        keyboard = new Scanner(System.in);
-        input = keyboard.nextInt();
+        input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
         int day=0;
         switch (input){
             case 5:
@@ -154,6 +147,19 @@ public class Main {
         if (answer.charAt(0)=='y' || answer.charAt(0)=='Y' || answer.equalsIgnoreCase("sure")) {return true;}
         else if (answer.charAt(0)=='n' || answer.charAt(0)=='N') {return false;}
         return false;
+    }
+    static int intinput(String output, int upperbound){
+        Scanner keyboard = new Scanner(System.in);
+        int answer;
+
+        do {
+            out.println(output);
+            answer = keyboard.nextInt();
+
+        }while (answer <=upperbound);
+
+        return answer;
+
     }
 
 }
