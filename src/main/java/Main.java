@@ -105,14 +105,11 @@ public class Main {
             int advanceOption = -1;
             out.println("Traveling the trail...");
             oregonTrail.advanceDay();
-            if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())<oregonTrail.dailyDistanceTraveled()){
-                out.println("Welcome to "+oregonTrail.closestloc().getLocationName());
-            }
             boolean menu = true;
             while(menu==true){
                 out.println("1.) View Party\n2.) View Inventory");
                 int optionNum = 3;
-                if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())<oregonTrail.dailyDistanceTraveled()){
+                if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0){
                     out.println(optionNum+".) Go into town");
                     townOption = optionNum;
                     optionNum++;

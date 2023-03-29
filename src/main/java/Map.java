@@ -63,9 +63,17 @@ public class Map {
 
         public void advanceDay() {
             int dist = dailyDistanceTraveled();
-            playerdistance += dist;
-            daynumber++;
-            dayDisplay(dist);
+            int distanceToNextLocation = distanceto(closestloc());
+            if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
+                playerdistance+=distanceToNextLocation;
+                daynumber++;
+                dayDisplay(distanceToNextLocation);
+            }
+            else {
+                playerdistance += dist;
+                daynumber++;
+                dayDisplay(dist);
+            }
         }
         public int dailyDistanceTraveled(){
             //for testing will be 20, however at some point will need to handle distance calulation
