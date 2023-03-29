@@ -9,8 +9,5 @@
         <module name="OregonTrail" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="OregonTrail" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

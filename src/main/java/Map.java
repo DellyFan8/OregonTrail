@@ -100,16 +100,17 @@ public class Map {
         }
     }
 
-    public void RandomSickness(String name, int health) {//name should be replaced with Enum
+    public void RandomSickness(String Enum, int health) {//name should be replaced with Enum
         int randSickness = (int) (Math.random() % 100);
+        Effect EffectClass = new Effect();
         if (health != 40) {
             if (randSickness >= 0 && randSickness <= (40 - health)) {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
                 if (num == 0) {
-                    // print out that "name" got dysentery
+                    EffectClass.Sickness(Enum, "dysentery");
                 } else if (num == 1) {
-                    // print out that "name" got measles
+                    EffectClass.Sickness(Enum, "measles");
                 }
             }
 
