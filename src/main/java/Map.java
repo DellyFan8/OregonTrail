@@ -97,7 +97,7 @@ public class Map {
     }
     public void RandomEvent() {
         Random rand = new Random();
-        int randNum = rand.nextInt(100);
+        int randNum = (int) (Math.random() % 100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
         }
         else if (randNum >= 2 && randNum <= 3) { // thief comes during night(2.0%), call event class
