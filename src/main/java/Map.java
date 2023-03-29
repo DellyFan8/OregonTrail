@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.lang.System.out;
 
@@ -81,9 +82,11 @@ public class Map {
             return 20;
         }
     public void dayDisplay(int distanceTravelled){
-//display day related information every time a day advances
-        //record names of places entered, rivers crossed etc
-           out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we dont get "April 1st day 0:"
+    //display day related information every time a day advances
+        // record names of places entered, rivers crossed etc
+
+
+           out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we don't get "April 1st day 0:"
            out.println("Today you travelled "+ distanceTravelled+" miles.");
 
            if (distanceto()==0){out.println("You crossed the "+closestloc().getLocationName().substring(0,closestloc().getLocationName().length()-9)+".");}
@@ -93,7 +96,8 @@ public class Map {
 
     }
     public void RandomEvent() {
-        int randNum = (int) (Math.random() % 100);
+        Random rand = new Random();
+        int randNum = rand.nextInt(100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
         }
         else if (randNum >= 2 && randNum <= 3) { // thief comes during night(2.0%), call event class

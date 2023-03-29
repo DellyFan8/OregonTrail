@@ -14,44 +14,69 @@ public class Main {
     //Career select
 
     public static void main(String[] args) {
-        out.println("Hello World!");
-        List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
-        Random random = new Random();
-        party = new ArrayList<Person>();
-        out.println("Your Party names: ");
-        int namepos = random.nextInt(20);
-        String names = name.get(namepos);
-        out.println(names);
-        int age = random.nextInt(25)+10;
-        party.add(new Person(age,names,40, Person.Gender.MALE ));
-        namepos = random.nextInt(20)+20;
-        names = name.get(namepos);
-        out.println(names);
-        age = random.nextInt(25)+10;
-        party.add(new Person(age,names,40, Person.Gender.FEMALE ));
-        for (int i = 0; i < 3; i++) {
-            namepos = random.nextInt(name.size());
+
+
+        //region Naming declaration
+            Random random = new Random();
+            List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
+            party = new ArrayList<Person>();
+            out.println("Your Party names: ");
+
+            //Declaing Father Figure
+            int namepos = random.nextInt(20);
+            String names = name.get(namepos);
+            out.println(names);
+            int age = random.nextInt(25) + 15;
+            party.add(new Person(age, names, 40, Person.Gender.MALE));
+
+            //Declaring Mother
+            namepos = random.nextInt(20) + 20;
             names = name.get(namepos);
             out.println(names);
-            age = random.nextInt(20);
-            if (namepos<=20) {
-                party.add(new Person(age,names,40, Person.Gender.MALE ));
-            }
-              else {
-                party.add(new Person(age,names,40, Person.Gender.FEMALE ));
-            }
-        }
-        boolean cool = keyboardyn("Is this okay? (y/n)");
-        if(!cool){out.println("This is MVP, I truly do not care.");}
+            age = random.nextInt(25) + 15;
+            party.add(new Person(age, names, 40, Person.Gender.FEMALE));
 
-        int input =intinput(party.get(0).getName()+"'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer",3);
-        //you happy aaron
-        int startcash = (input == 1)? 1600:(input==2)? 800:(input==3)?400:1600;
-        //women's career?
+            //Children generation
+            for (int i = 0; i < 3; i++) {
+                namepos = random.nextInt(name.size());
+                names = name.get(namepos);
+                out.println(names);
+                age = random.nextInt(18);//technically can have kids older than mom and dad...
+                if (namepos <= 20) {
+                    party.add(new Person(age, names, 40, Person.Gender.MALE));
+                } else {
+                    party.add(new Person(age, names, 40, Person.Gender.FEMALE));
+                }
+            }
+
+            boolean cool = keyboardyn("Is this okay? (y/n)");
+            if (!cool) {out.println("This is MVP, I truly do not care.");}
+//endregion
+
+        //region Career choices
+
+        //Man Career
+        int input = intinput(party.get(0).getName() + "'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer", 3);
+        int startcash = (input == 1) ? 1600 : (input == 2) ? 800 : (input == 3) ? 400 : (input == 4) ? 0 : 1600;        //you happy aaron
+
+
+        //Women's Career?
+        //if we do this the above numbers should be adjusted.
+
+        input = intinput(party.get(1).getName() + "'s Career?\n1.) Apothecary\n2.) Blacksmiths\n3.) Tavern Keeper\n4.) Housewife", 4);
+        startcash += (input == 1) ? 800 : (input == 2) ? 400 : (input == 3) ? 200 : (input == 4) ? 0 : 800;
+
+        //generating
         inventory = new Inventory(startcash);
+
+//endregion
+
+        //region Date to leave
         out.println("What month do you wish to leave?");
         input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
         int day=0;
+
+        //Calculating what day to set calendar to
         switch (input){
             case 5:
                 day+=30;
@@ -65,36 +90,54 @@ public class Main {
                 day+=0;
                 break;
         }
+        //endregion
 
+        //region Location Declaration
+
+        //Declare location runner
         ArrayList<Location> runnerLocations = new ArrayList<Location>();
+
+        //Independence information
         runnerLocations.add(new Location(0,"Independence",new Store("Independence Wholesale", inventory), 1));
-        //Declare information about KR crossing.
+
+        //KR crossing information
         Event krCrossing = new Event(Event.EventType.RIVERCROSSING);
         runnerLocations.add(new Location(102, "Kansas River crossing",krCrossing));
-        //Declare information about BBR crossing.
+
+        //BBR crossing information
         Event bbrCrossing = new Event(Event.EventType.RIVERCROSSING);
         runnerLocations.add(new Location(184,"Big Blue River Crossing",bbrCrossing));
 
-        runnerLocations.add(new Location(319,"Fort Kearny",new Store("Koo Koo Kearney's", inventory), 1.25));//Koo's Store does not ever get called
-        //Declare information about AshHallow, Event class will probably need updating.
+        //Fort Kearny information
+        runnerLocations.add(new Location(319,"Fort Kearny",new Store("Koo Koo Kearney's", inventory), 1.25));
+
+        //Ash Hallow information
         Event ashHallow = new Event(Event.EventType.ENDOFPROTYPE);
         runnerLocations.add(new Location(504,"Ash Hallow", ashHallow));
+        //endregion
 
-
+        //Declare Oregon Trail Map
         oregonTrail = new Map(runnerLocations,day);
 
+        //region Shopping!
         out.println("You need to go shopping before you can depart.");
+
         if(oregonTrail.closestloc().hasStore()){
             oregonTrail.closestloc().goShopping();
         }
-        out.println("You leave leaving " + oregonTrail.closestloc().getLocationName() + " on " + oregonTrail.toDate());
-        playGame();
 
+        out.println("You leave leaving " + oregonTrail.closestloc().getLocationName() + " on " + oregonTrail.toDate());
+        //endregion
+
+        // Play game
+        playGame();
     }
 
     public static void playGame(){
+        //declaring stuff
         Scanner keyboard = new Scanner(System.in);
         boolean keepGoing = true;
+
         while(keepGoing){
             int townOption = -1;
             int advanceOption = -1;
@@ -165,7 +208,7 @@ public class Main {
                 out.println("you lost some items: Insert items lost here");
                 break;
             case 2:
-                out.println("you should've died. but we haven't implemented death yet");
+                out.println("You should've died. but we haven't implemented death yet");
                 break;
             default:
                 out.println("you successfully crossed the "+river+".");
