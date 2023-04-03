@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 import static java.lang.System.out;
@@ -31,12 +32,14 @@ public class Map {
         private int playerdistance=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
         private int startnumber;
+        private ArrayList<String> notification = new ArrayList<>();
 
 
         public Map(ArrayList<Location> locations, int day) {
             this.locations = locations;
             this.daynumber=day;
             this.startnumber=day;
+
         }
 
         public int distanceto(Location target){
@@ -62,41 +65,83 @@ public class Map {
         }
 
 
-        public void advanceDay() {
+        public int advanceDay() {
             int dist = dailyDistanceTraveled();
             int distanceToNextLocation = distanceto(closestloc());
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 playerdistance+=distanceToNextLocation;
                 daynumber++;
-                dayDisplay(distanceToNextLocation);
+
+                //needs to be done separately
+                return distanceToNextLocation;
             }
             else {
                 playerdistance += dist;
                 daynumber++;
-                dayDisplay(dist);
+                return dist;
+            }
+
+        }
+
+        public void addnoti(String runnernotification){
+            notification.add(runnernotification);
+        }
+        public void clearnoti(){
+            for (int i = notification.size(); i > 0; i--) {
+                notification.remove(0);
             }
         }
+        public String getnoti(int index){
+            return notification.get(index);
+        }
+
+
         public int dailyDistanceTraveled(){
             //for testing will be 20, however at some point will need to handle distance calulation
             //may need to be passed information
             return 20;
         }
+//    Legacy funtion:
+//    public void dayDisplay(){
+//        //display day related information every time a day advances
+//        // record names of places entered, rivers crossed etc
+//
+//
+//        out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we don't get "April 1st day 0:"
+//        if (notification.size()!=0){
+//            for (int i = 0; i <notification.size() ; i++) {
+//                out.println(getnoti(i));
+//            }
+//        }
+//
+//        out.println("Daily log of injuries, illnesses, events, etc. goes here");
+//        clearnoti();
+//
+//    }
     public void dayDisplay(int distanceTravelled){
     //display day related information every time a day advances
         // record names of places entered, rivers crossed etc
 
-
+//Use we or you?
            out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we don't get "April 1st day 0:"
            out.println("Today you travelled "+ distanceTravelled+" miles.");
-
-           if (distanceto()==0){out.println("You crossed the "+closestloc().getLocationName().substring(0,closestloc().getLocationName().length()-9)+".");}
+           if (distanceto()== 0)
+           {
+               if (closestloc().hasEvent()) {
+                   if (closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING)
+                       out.println("You crossed the " + closestloc().getLocationName().substring(0, closestloc().getLocationName().length() - 9) + ".");
+               }
+           }
            else out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
+           if (notification.size()!=0){
+               for (int i = 0; i <notification.size() ; i++) {
+                   out.println(getnoti(i));
+           }
+           }
 
-           // work in progress still, got confused
-           //for (int i = 0; i < Main.party.size(); i++) {
-
-          // }
            out.println("Daily log of injuries, illnesses, events, etc. goes here");
+           clearnoti();
+           out.println();
 
     }
     public void RandomEvent() {

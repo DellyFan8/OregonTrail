@@ -126,7 +126,11 @@ public class Main {
             oregonTrail.closestloc().goShopping();
         }
 
-        out.println("You leave leaving " + oregonTrail.closestloc().getLocationName() + " on " + oregonTrail.toDate());
+
+        oregonTrail.addnoti("Today we left "+oregonTrail.closestloc().getLocationName()+".");
+        oregonTrail.addnoti("We bought X items while there.");
+        oregonTrail.addnoti("check");
+        oregonTrail.dayDisplay(20);
         //endregion
 
         // Play game
@@ -138,56 +142,92 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         boolean keepGoing = true;
 
+
         while(keepGoing){
+            //Order of days events:
+            //display date
+            //What to do?
+            //Travel distance(20miles or to next location)
+            //check for events or store
+            //play events or town
+            //Display what has happened over the day
+
+
+
             int townOption = -1;
             int advanceOption = -1;
-            out.println("Traveling the trail...");
-            oregonTrail.advanceDay();
+
+            int distancetraversed = oregonTrail.advanceDay();
+            if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
+                if (riverEvent(oregonTrail.closestloc())){
+                }
+                else{}
+            }
+            //region Menu
             boolean menu = true;
             while(menu==true){
                 out.println("1.) View Party\n2.) View Inventory");
                 int optionNum = 3;
-                if(oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0&&oregonTrail.closestloc().hasStore()){
-                    out.println(optionNum+".) Go into town");
+                if (oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0 && oregonTrail.closestloc().hasStore()) {
+                    out.println(optionNum + ".) Go into town");
                     townOption = optionNum;
                     optionNum++;
+
                 }
-                out.println(optionNum+".) Continue down the trail");
+                out.println(optionNum + ".) Continue down the trail");
                 advanceOption = optionNum;
-                out.println("\n\nWhat would you like to do?");
+                out.println("\nWhat would you like to do?");
+
                 int option = keyboard.nextInt();
-                if(option==1)
+
+                if (option == 1)
                     out.println(party.toString());
-                else if(option < 1 || option > optionNum)
+
+                else if (option < 1 || option > optionNum)
                     out.println("Please select something that is an option");
-                else if(option == 2)
+
+                else if (option == 2)
                     out.println(inventory.toString());
-                else if(option == townOption&&townOption!=-1)
+
+                else if (option == townOption && townOption != -1)
                     oregonTrail.closestloc().goIntoLocation();
-                else if(option == advanceOption){
+
+                else if (option == advanceOption) {
                     menu = false;
-                    if(oregonTrail.closestloc().getEvent().getEventType()==Event.EventType.RIVERCROSSING) {
-                        riverEvent(oregonTrail.closestloc());
-                    }
-                }
-                else{
+                    out.print("Traveling the trail");
+                    wait(750);
+                    out.print(".");
+                    wait(750);
+                    out.print(".");
+                    wait(750);
+                    out.println(".");
+
+                } else {
                     out.println("Please select something that is an option");
                 }
             }
+            oregonTrail.dayDisplay(distancetraversed);
+
+            //endregion
 
         }
     }
 
 
     static boolean keyboardyn(String output){
+
         out.println(output);
+
+        //Declare things
         Scanner keyboard = new Scanner(System.in);
         String answer = keyboard.nextLine();
+
         if (answer.charAt(0)=='y' || answer.charAt(0)=='Y' || answer.equalsIgnoreCase("sure")) {return true;}
         else if (answer.charAt(0)=='n' || answer.charAt(0)=='N') {return false;}
         return false;
     }
     static int intinput(String output, int upperbound){
+
         Scanner keyboard = new Scanner(System.in);
         int answer;
         do {
@@ -197,22 +237,44 @@ public class Main {
         return answer;
 
     }
-    public static void riverEvent(Location eventLocation){
+    static boolean riverEvent(Location eventLocation){
         //insert chances and effects for crossing river, may need to be passed inventory
+
         Random rand = new Random();
+
         out.println("You find yourself at "+eventLocation.getLocationName()+".");
-        String river =eventLocation.getLocationName();
-        river= river.substring(0, river.length()-9);
-        switch (rand.nextInt(5)) {
-            case 1:
-                out.println("you lost some items: Insert items lost here");
-                break;
-            case 2:
-                out.println("You should've died. but we haven't implemented death yet");
-                break;
-            default:
-                out.println("you successfully crossed the "+river+".");
-                break;
+        if(keyboardyn("Do you want to cross the River?")) {
+            //Random River nonsense
+            switch (rand.nextInt(5)) {
+                case 1:
+                    out.println("you lost some items: Insert items lost here");
+                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today, but lost *insert items here*");
+                    break;
+                case 2:
+                    out.println("You should've died. but we haven't implemented death yet");
+                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today."+" And should have died");
+                    break;
+                default:
+                    out.println("you successfully crossed the " + eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9) + ".");
+                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today.");
+                    break;
+            }
+            return true;
+        }
+        else{
+            return false;
+            }
+        }
+        static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
         }
     }
-}
+    }
+
