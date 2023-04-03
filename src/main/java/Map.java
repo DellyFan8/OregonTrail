@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 import static java.lang.System.out;
@@ -64,10 +63,11 @@ public class Map {
             return locations.get(locations.size()-1);
         }
 
-
+        //advance the day,
         public int advanceDay() {
-            int dist = dailyDistanceTraveled();
+            int dist = dailyDistanceTravelled();
             int distanceToNextLocation = distanceto(closestloc());
+
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 playerdistance+=distanceToNextLocation;
                 daynumber++;
@@ -83,20 +83,44 @@ public class Map {
 
         }
 
+        //handling if user decides to wait somewhere, not implemented elsewhere but may be eventually
+    public int advanceDay(boolean dayadvance) {
+        int dist = dailyDistanceTravelled();
+        int distanceToNextLocation = distanceto(closestloc());
+
+        if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
+            daynumber++;
+
+            //needs to be done separately
+            return 0;
+        }
+        else {
+            daynumber++;
+            return 0;
+        }
+
+    }
+
+
+    //add a notification to be displayed
         public void addnoti(String runnernotification){
             notification.add(runnernotification);
         }
+
+        //Clear all notifications
         public void clearnoti(){
             for (int i = notification.size(); i > 0; i--) {
                 notification.remove(0);
             }
         }
+
+        //Get a notification from an index
         public String getnoti(int index){
             return notification.get(index);
         }
 
-
-        public int dailyDistanceTraveled(){
+        //Calculating miles travelled on a given day
+        public int dailyDistanceTravelled(){
             //for testing will be 20, however at some point will need to handle distance calulation
             //may need to be passed information
             return 20;
@@ -118,22 +142,25 @@ public class Map {
 //        clearnoti();
 //
 //    }
+
+    //display what events happened that day
     public void dayDisplay(int distanceTravelled){
     //display day related information every time a day advances
         // record names of places entered, rivers crossed etc
 
 //Use we or you?
-           out.println("Day "+(daynumber-startnumber)+", "+toDate()+":"); //plus one so we don't get "April 1st day 0:"
+
            out.println("Today you travelled "+ distanceTravelled+" miles.");
            if (distanceto()== 0)
            {
-               if (closestloc().hasEvent()) {
-                   if (closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING)
-                       out.println("You crossed the " + closestloc().getLocationName().substring(0, closestloc().getLocationName().length() - 9) + ".");
-               }
+               //This can now be handled with noticiations. keeping here because it was stupid once upon a time and good for memories
+//               if (closestloc().hasEvent()) {
+//                   if (closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING)
+//                       out.println("You crossed the " + closestloc().getLocationName().substring(0, closestloc().getLocationName().length() - 9) + ".");
+//               }
            }
            else out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
-           if (notification.size()!=0){
+        if (notification.size()!=0){
                for (int i = 0; i <notification.size() ; i++) {
                    out.println(getnoti(i));
            }
@@ -144,6 +171,7 @@ public class Map {
            out.println();
 
     }
+
     public void RandomEvent() {
         Random rand = new Random();
         int randNum = (int) (Math.random() % 100);
@@ -174,6 +202,7 @@ public class Map {
         return health;
     }
 
+    //A classic to string
     @Override
     public String toString() {
         return "RelearningJavaEt{" +
@@ -183,12 +212,33 @@ public class Map {
                 '}';
     }
 
-    public String toDate()
-    {
+    //Funtion to take date current day count and return a formatted string
+    public String toDate() {
             int numdate= this.daynumber;
             LocalDate date = LocalDate.of(1850, 3, 1).plusDays(numdate);
             String formattedDate = date.format(DateTimeFormatter.ofPattern("MMMM d")); // format as "MonthName day"
             return  formattedDate;
     }
 
+    //Functing to display the date
+    public void datedisplay(){
+        String date = "Day "+(daynumber-startnumber)+", "+toDate()+":";
+        for (int i = 0; i <date.length() ; i++) {
+            out.print(date.charAt(i));
+            wait(100);
+        }
+        out.print("\n");
+    }
+
+    //A terrible funtion to wait
+    static void wait(int ms) {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
 }

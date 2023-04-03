@@ -129,7 +129,6 @@ public class Main {
 
         oregonTrail.addnoti("Today we left "+oregonTrail.closestloc().getLocationName()+".");
         oregonTrail.addnoti("We bought X items while there.");
-        oregonTrail.addnoti("check");
         oregonTrail.dayDisplay(20);
         //endregion
 
@@ -146,23 +145,26 @@ public class Main {
         while(keepGoing){
             //Order of days events:
             //display date
+                //check
             //What to do?
+                //check
             //Travel distance(20miles or to next location)
+                //check
             //check for events or store
+                //check for rivers, unsure on stores
             //play events or town
+                //see above
             //Display what has happened over the day
+                //check
 
 
 
             int townOption = -1;
             int advanceOption = -1;
+            int distancetraversed = 0;
 
-            int distancetraversed = oregonTrail.advanceDay();
-            if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
-                if (riverEvent(oregonTrail.closestloc())){
-                }
-                else{}
-            }
+            oregonTrail.datedisplay();
+
             //region Menu
             boolean menu = true;
             while(menu==true){
@@ -176,7 +178,7 @@ public class Main {
                 }
                 out.println(optionNum + ".) Continue down the trail");
                 advanceOption = optionNum;
-                out.println("\nWhat would you like to do?");
+                out.print("What would you like to do?  ");
 
                 int option = keyboard.nextInt();
 
@@ -194,6 +196,7 @@ public class Main {
 
                 else if (option == advanceOption) {
                     menu = false;
+                    distancetraversed= oregonTrail.advanceDay();
                     out.print("Traveling the trail");
                     wait(750);
                     out.print(".");
@@ -205,6 +208,11 @@ public class Main {
                 } else {
                     out.println("Please select something that is an option");
                 }
+                if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
+                    if (riverEvent(oregonTrail.closestloc())){
+                    }
+                    else{}
+                }
             }
             oregonTrail.dayDisplay(distancetraversed);
 
@@ -213,7 +221,7 @@ public class Main {
         }
     }
 
-
+    //takes in an string for a yes no reponse and returns bool
     static boolean keyboardyn(String output){
 
         out.println(output);
@@ -226,6 +234,8 @@ public class Main {
         else if (answer.charAt(0)=='n' || answer.charAt(0)=='N') {return false;}
         return false;
     }
+
+    //Takes in string and outputs it repeatedly until an answer is sucessfully given.
     static int intinput(String output, int upperbound){
 
         Scanner keyboard = new Scanner(System.in);
@@ -237,6 +247,9 @@ public class Main {
         return answer;
 
     }
+
+
+    //deals with river crossings when called
     static boolean riverEvent(Location eventLocation){
         //insert chances and effects for crossing river, may need to be passed inventory
 
@@ -265,8 +278,9 @@ public class Main {
             return false;
             }
         }
-        static void wait(int ms)
-    {
+
+        //another terrible wait
+        static void wait(int ms) {
         try
         {
             Thread.sleep(ms);

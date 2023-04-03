@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Grouping and actually commenting on code thing">
+    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Clean up and fixing some language and routing through each day">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
@@ -116,7 +116,7 @@
       <workItem from="1680192618479" duration="1954000" />
       <workItem from="1680523967104" duration="3310000" />
       <workItem from="1680527514030" duration="34000" />
-      <workItem from="1680527562987" duration="10233000" />
+      <workItem from="1680527562987" duration="13099000" />
     </task>
     <task id="LOCAL-00001" summary="Made rough functionality for inventory system and item classes. Also added example class to show interfacing with items and the inventory class">
       <created>1679412927917</created>
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680121785666</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Clean up and fixing some language and routing through each day">
+      <created>1680551033803</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680551033803</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +248,22 @@
     <MESSAGE value="Grouping and actually commenting on code thing" />
     <MESSAGE value="Changes made to call Effect Class method in Map Class." />
     <MESSAGE value="More small changes to Effect Class and method in Map Class." />
-    <option name="LAST_COMMIT_MESSAGE" value="More small changes to Effect Class and method in Map Class." />
+    <MESSAGE value="Clean up and fixing some language and routing through each day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up and fixing some language and routing through each day" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Map.java</url>
+          <line>233</line>
+          <properties class="Map" method="wait">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
