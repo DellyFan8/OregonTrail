@@ -4,34 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="adding sicknesses and function so boot" />
+    <list default="true" id="f2d25867-3f65-4a30-bd12-e71a11166833" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="b1ddf07f-02eb-41fc-bdda-803707b156cf" />
-        <option name="url" value="https://github.com/DellyFan8/OregonTrail" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,258 +28,26 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2NKSYorKU6ultwuF7o95icqZUA3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <OptionsSetting value="false" id="Update" />
-  </component>
+  <component name="ProjectId" id="2NxrjCf73LEWWVlPkQrkzUcl2KM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\aug30\IdeaProjects\OregonTrail\src" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Location" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Location" />
-      <module name="OregonTrail" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="OregonTrail" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="src/main/java/Main.java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Location" />
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="" />
-      <created>1679411337466</created>
+      <changelist id="f2d25867-3f65-4a30-bd12-e71a11166833" name="Changes" comment="" />
+      <created>1680616707655</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1679411337466</updated>
-      <workItem from="1679411340995" duration="18372000" />
-      <workItem from="1679662859765" duration="13038000" />
-      <workItem from="1680116937757" duration="3864000" />
-      <workItem from="1680192618479" duration="1954000" />
-      <workItem from="1680523967104" duration="3310000" />
-      <workItem from="1680527514030" duration="34000" />
-      <workItem from="1680527562987" duration="13099000" />
-      <workItem from="1680611796990" duration="405000" />
+      <updated>1680616707655</updated>
     </task>
-    <task id="LOCAL-00001" summary="Made rough functionality for inventory system and item classes. Also added example class to show interfacing with items and the inventory class">
-      <created>1679412927917</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1679412927917</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Refines Previous examples and adds documentation. Changes how the count of items works as well">
-      <created>1679435203912</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1679435203912</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Tweaked inventory methods.  Also added code to give shops basic functionality in the game.">
-      <created>1679617274911</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1679617274911</updated>
-    </task>
-    <task id="LOCAL-00004" summary="doing intro, names, date to leave added. needs store. also added date from day thing">
-      <created>1680021128042</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1680021128042</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Previous commit destroyed some work, I think this fixes it.">
-      <created>1680033331541</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1680033331541</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Declaring Prototype Map">
-      <created>1680039168536</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1680039168536</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Removing unimportant files, merging aaron's work with stuff i forgot to commit, and started a list of short to do in main.">
-      <created>1680092723475</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1680092723475</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Fixing capitalisation">
-      <created>1680092932724</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1680092932724</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Partially started career select.">
-      <created>1680094240920</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1680094240920</updated>
-    </task>
-    <task id="LOCAL-00010" summary="aaron wanted it">
-      <created>1680095101193</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1680095101193</updated>
-    </task>
-    <task id="LOCAL-00011" summary="created intinput function in main. aaron possibly move your thing to it?">
-      <created>1680096568470</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1680096568470</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Changes made to call Effect Class method in Map Class.">
-      <created>1680120283257</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1680120283257</updated>
-    </task>
-    <task id="LOCAL-00013" summary="More small changes to Effect Class and method in Map Class.">
-      <created>1680121785666</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1680121785666</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Clean up and fixing some language and routing through each day">
-      <created>1680551033803</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1680551033803</updated>
-    </task>
-    <task id="LOCAL-00015" summary="changed from Enum back to name">
-      <created>1680610046670</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1680610046670</updated>
-    </task>
-    <task id="LOCAL-00016" summary="adding sicknesses and function so boot">
-      <created>1680616536935</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1680616536935</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made rough functionality for inventory system and item classes. Also added example class to show interfacing with items and the inventory class" />
-    <MESSAGE value="Refines Previous examples and adds documentation. Changes how the count of items works as well" />
-    <MESSAGE value="Tweaked inventory methods.  Also added code to give shops basic functionality in the game." />
-    <MESSAGE value="doing intro, names, date to leave added. needs store. also added date from day thing" />
-    <MESSAGE value="Previous commit destroyed some work, I think this fixes it." />
-    <MESSAGE value="Declaring Prototype Map" />
-    <MESSAGE value="Removing unimportant files, merging aaron's work with stuff i forgot to commit, and started a list of short to do in main." />
-    <MESSAGE value="Fixing capitalisation" />
-    <MESSAGE value="Partially started career select." />
-    <MESSAGE value="aaron wanted it" />
-    <MESSAGE value="created intinput function in main. aaron possibly move your thing to it?" />
-    <MESSAGE value="Grouping and actually commenting on code thing" />
-    <MESSAGE value="Changes made to call Effect Class method in Map Class." />
-    <MESSAGE value="More small changes to Effect Class and method in Map Class." />
-    <MESSAGE value="Clean up and fixing some language and routing through each day" />
-    <MESSAGE value="changed from Enum back to name" />
-    <MESSAGE value="adding sicknesses and function so boot" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding sicknesses and function so boot" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Map.java</url>
-          <line>233</line>
-          <properties class="Map">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

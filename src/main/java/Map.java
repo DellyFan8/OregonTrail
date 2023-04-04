@@ -175,8 +175,12 @@ public class Map {
         Random rand = new Random();
         int randNum = (int) (Math.random() % 100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
+            notification.add("Trail lost, you lose two days.");
+            advanceDay(false);
+            advanceDay(false);
         }
         else if (randNum >= 2 && randNum <= 3) { // thief comes during night(2.0%), call event class
+            // eventually will steal items from your inventory
         }
     }
 
@@ -188,17 +192,29 @@ public class Map {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
                 int newHealth;
+                String SicknessNotification;
                 if (num == 0) {
-                    newHealth = EffectClass.Sickness(name, "dysentery", health);
+                    String type = "dysentery";
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
+                    healthnoti(name, SicknessNotification, type);
                     return newHealth;
-                } else if (num == 1) {
-                    newHealth = EffectClass.Sickness(name, "measles", health);
+                }
+                else if (num == 1) {
+                    String type = "measles";
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
+                    healthnoti(name, SicknessNotification, type);
                     return newHealth;
                 }
             }
             else { return health; }
         }
         return health;
+    }
+
+    public void healthnoti(String name, String healthNotification, String type) {
+        notification.add(name + healthNotification + type + ".");
     }
 
     //A classic to string
