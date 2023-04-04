@@ -60,7 +60,7 @@ public class Main {
 
             //Man Career
             int input = intinput(party.get(0).getName() + "'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer", 3);
-            int startcash = (input == 1) ? 1600 : (input == 2) ? 800 : (input == 3) ? 400 : (input == 4) ? 0 : 1600;        //you happy aaron
+            int startcash = (input == 1) ? 800 : (input == 2) ? 400 : (input == 3) ? 200 : (input == 4) ? 0 : 1600;        //you happy aaron
 
 
             //Women's Career?
@@ -70,7 +70,7 @@ public class Main {
             startcash += (input == 1) ? 800 : (input == 2) ? 400 : (input == 3) ? 200 : (input == 4) ? 0 : 800;
 
             //generating
-            inventory = new Inventory(startcash);
+            inventory = new Inventory(startcash,party);
 
 //endregion
         }
@@ -107,7 +107,7 @@ public class Main {
             out.println(names);
             age = random.nextInt(10)+1;
             party.add(new Person(age, names, 40, Person.Gender.MALE));
-            inventory = new Inventory(865);
+            inventory = new Inventory(865,party);
 
 
         }
@@ -193,9 +193,6 @@ public class Main {
             //check for events or store
                 //check for rivers, unsure on stores
             //check for sickness
-
-
-
             //play events or town
                 //see above
             //Display what has happened over the day
@@ -255,13 +252,13 @@ public class Main {
                 } else {
                     out.println("Please select something that is an option");
                 }
-
-                if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
-                    if (riverEvent(oregonTrail.closestloc())){
+                    if (oregonTrail.closestloc().hasEvent()) {
+                        if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
+                            if (riverEvent(oregonTrail.closestloc())) {
+                            } else {
+                            }
+                        }
                     }
-                    else{}
-                }
-
 
                 //Person sickness handling
                 for (int i = 0; i < inventory.personcount(); i++) {

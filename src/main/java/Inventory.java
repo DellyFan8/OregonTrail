@@ -9,6 +9,11 @@ public class Inventory {
     //Stores group's money
     private double dollars;
 
+    public Inventory(double dollars, ArrayList<Person> peopleinparty){
+        this.peopleinparty = peopleinparty;
+        items = new ArrayList<>();
+        this.dollars = dollars;
+    }
     public Inventory(double dollars){
         items = new ArrayList<>();
         this.dollars = dollars;
