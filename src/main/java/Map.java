@@ -188,17 +188,29 @@ public class Map {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
                 int newHealth;
+                String SicknessNotification;
                 if (num == 0) {
-                    newHealth = EffectClass.Sickness(name, "dysentery", health);
+                    String type = "dysentery";
+                    newHealth = EffectClass.Sickness(name, type, health);
+                    SicknessNotification = EffectClass.SicknessResult(name, type, health);
+                    healthnoti(name, SicknessNotification, type);
                     return newHealth;
-                } else if (num == 1) {
-                    newHealth = EffectClass.Sickness(name, "measles", health);
+                }
+                else if (num == 1) {
+                    String type = "measles";
+                    newHealth = EffectClass.Sickness(name, type, health);
+                    SicknessNotification = EffectClass.SicknessResult(name, type, health);
+                    healthnoti(name, SicknessNotification, type);
                     return newHealth;
                 }
             }
             else { return health; }
         }
         return health;
+    }
+
+    public void healthnoti(String name, String healthNotification, String type) {
+        notification.add(name + healthNotification + type + ".");
     }
 
     //A classic to string
