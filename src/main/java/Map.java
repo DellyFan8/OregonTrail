@@ -185,7 +185,7 @@ public class Map {
         int randSickness = (int) (Math.random() % 100);
         Effect EffectClass = new Effect();
         if (health != 40) {
-            if (randSickness >= 0 && randSickness <= (40 - health)) {
+            if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
                 int newHealth;

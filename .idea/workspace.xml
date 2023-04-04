@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Clean up and fixing some language and routing through each day">
+    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="changed from Enum back to name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Effect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +39,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2NKSYorKU6ultwuF7o95icqZUA3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -227,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680551033803</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="changed from Enum back to name">
+      <created>1680610046670</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680610046670</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +274,8 @@
     <MESSAGE value="Changes made to call Effect Class method in Map Class." />
     <MESSAGE value="More small changes to Effect Class and method in Map Class." />
     <MESSAGE value="Clean up and fixing some language and routing through each day" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up and fixing some language and routing through each day" />
+    <MESSAGE value="changed from Enum back to name" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed from Enum back to name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
