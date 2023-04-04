@@ -193,6 +193,9 @@ public class Main {
             //check for events or store
                 //check for rivers, unsure on stores
             //check for sickness
+                //check
+            // check for random events
+                //check
             //play events or town
                 //see above
             //Display what has happened over the day
@@ -265,6 +268,8 @@ public class Main {
                     inventory.getIndividual(i).setHealth(oregonTrail.RandomSickness(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
 
                 }
+
+                oregonTrail.RandomEvent();
 
             }
             oregonTrail.dayDisplay(distancetraversed);
