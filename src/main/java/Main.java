@@ -22,7 +22,7 @@ public class Main {
             party = new ArrayList<Person>();
             out.println("Your Party names: ");
 
-            //Declaing Father Figure
+            //Declaring Father Figure
             int namepos = random.nextInt(20);
             String names = name.get(namepos);
             out.println(names);
@@ -37,7 +37,7 @@ public class Main {
             party.add(new Person(age, names, 40, Person.Gender.FEMALE));
 
             //Children generation
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 namepos = random.nextInt(name.size());
                 names = name.get(namepos);
                 out.println(names);
@@ -117,7 +117,7 @@ public class Main {
         //endregion
 
         //Declare Oregon Trail Map
-        oregonTrail = new Map(runnerLocations,day);
+        oregonTrail = new Map(runnerLocations, inventory, day);
 
         //region Shopping!
         out.println("You need to go shopping before you can depart.");
@@ -230,7 +230,7 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         String answer = keyboard.nextLine();
 
-        if (answer.charAt(0)=='y' || answer.charAt(0)=='Y' || answer.equalsIgnoreCase("sure")) {return true;}
+        if (answer.toUpperCase().charAt(0)=='Y' ||answer.equalsIgnoreCase("sure")) {return true;}
         else if (answer.charAt(0)=='n' || answer.charAt(0)=='N') {return false;}
         return false;
     }

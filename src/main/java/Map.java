@@ -34,11 +34,10 @@ public class Map {
         private ArrayList<String> notification = new ArrayList<>();
 
 
-        public Map(ArrayList<Location> locations, int day) {
+        public Map(ArrayList<Location> locations, Inventory inventory, int day) {
             this.locations = locations;
             this.daynumber=day;
             this.startnumber=day;
-
         }
 
         public int distanceto(Location target){
@@ -185,7 +184,7 @@ public class Map {
         int randSickness = (int) (Math.random() % 100);
         Effect EffectClass = new Effect();
         if (health != 40) {
-            if (randSickness >= 0 && randSickness <= (40 - health)) {
+            if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
                 int newHealth;
