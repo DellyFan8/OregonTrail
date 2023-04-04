@@ -192,6 +192,10 @@ public class Main {
                 //check
             //check for events or store
                 //check for rivers, unsure on stores
+            //check for sickness
+
+
+
             //play events or town
                 //see above
             //Display what has happened over the day
@@ -234,6 +238,9 @@ public class Main {
                 else if (option == townOption && townOption != -1)
                     oregonTrail.closestloc().goIntoLocation();
 
+
+
+
                 else if (option == advanceOption) {
                     menu = false;
                     distancetraversed= oregonTrail.advanceDay();
@@ -248,11 +255,20 @@ public class Main {
                 } else {
                     out.println("Please select something that is an option");
                 }
+
                 if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
                     if (riverEvent(oregonTrail.closestloc())){
                     }
                     else{}
                 }
+
+
+                //Person sickness handling
+                for (int i = 0; i < inventory.personcount(); i++) {
+                    inventory.getIndividual(i).setHealth(oregonTrail.RandomSickness(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
+
+                }
+
             }
             oregonTrail.dayDisplay(distancetraversed);
 

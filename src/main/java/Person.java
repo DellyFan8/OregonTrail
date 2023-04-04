@@ -19,6 +19,12 @@ public class Person {
     public String getName() {
         return name;
     }
+    public int getHealth(){
+        return this.health;
+    }
+    public void setHealth(int runnerhealth){
+        this.health= runnerhealth;
+    }
 
     @Override
     public String toString() {

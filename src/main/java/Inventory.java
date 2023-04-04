@@ -13,6 +13,9 @@ public class Inventory {
         items = new ArrayList<>();
         this.dollars = dollars;
     }
+    public int personcount(){
+        return peopleinparty.size();
+    }
 
     //Adds item to the inventory list
     //If item already exists then quantity is increased of that item instead of adding a new object
@@ -71,6 +74,13 @@ public class Inventory {
         }
 
         return toReturn;
+    }
+
+    public ArrayList<Person> getPeopleinparty() {
+        return peopleinparty;
+    }
+    public Person getIndividual(int index){
+        return getPeopleinparty().get(index);
     }
 
     public ArrayList<Item> getItems(){
