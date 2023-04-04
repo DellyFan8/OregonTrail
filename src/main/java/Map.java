@@ -34,11 +34,10 @@ public class Map {
         private ArrayList<String> notification = new ArrayList<>();
 
 
-        public Map(ArrayList<Location> locations, int day) {
+        public Map(ArrayList<Location> locations, Inventory inventory, int day) {
             this.locations = locations;
             this.daynumber=day;
             this.startnumber=day;
-
         }
 
         public int distanceto(Location target){
