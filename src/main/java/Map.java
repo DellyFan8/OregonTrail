@@ -191,15 +191,15 @@ public class Map {
                 String SicknessNotification;
                 if (num == 0) {
                     String type = "dysentery";
-                    newHealth = EffectClass.Sickness(name, type, health);
-                    SicknessNotification = EffectClass.SicknessResult(name, type, health);
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
                     healthnoti(name, SicknessNotification, type);
                     return newHealth;
                 }
                 else if (num == 1) {
                     String type = "measles";
-                    newHealth = EffectClass.Sickness(name, type, health);
-                    SicknessNotification = EffectClass.SicknessResult(name, type, health);
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
                     healthnoti(name, SicknessNotification, type);
                     return newHealth;
                 }

@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Effect {
-    public int Sickness(String name, String type, int health) {
+    public int Sickness(String type, int health) {
         if (health <= 15) {
             health = 0;
             return health;
@@ -19,7 +19,7 @@ public class Effect {
             return health;
         }
     }
-    public String SicknessResult(String name, String type, int health) {
+    public String SicknessResult(String type, int health) {
         if (health <= 15) {
             return (" has died from ");
         }
