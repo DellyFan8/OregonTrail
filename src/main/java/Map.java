@@ -175,8 +175,12 @@ public class Map {
         Random rand = new Random();
         int randNum = (int) (Math.random() % 100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
+            notification.add("Trail lost, you lose two days.");
+            advanceDay(false);
+            advanceDay(false);
         }
         else if (randNum >= 2 && randNum <= 3) { // thief comes during night(2.0%), call event class
+            // eventually will steal items from inventory
         }
     }
 

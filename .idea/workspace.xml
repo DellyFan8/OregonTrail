@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Changes to RandomSickness/Effect">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Effect.java" afterDir="false" />
+    <list default="true" id="f5f2d4a3-cd73-4dd4-b10a-2f0df417c21d" name="Changes" comment="Changed how output of sicknesses works.">
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +240,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680610046670</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Changed how output of sicknesses works.">
+      <created>1680614566182</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680614566182</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changed how output of sicknesses works.">
+      <created>1680614658604</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680614658604</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,14 +289,15 @@
     <MESSAGE value="Clean up and fixing some language and routing through each day" />
     <MESSAGE value="changed from Enum back to name" />
     <MESSAGE value="Changes to RandomSickness/Effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to RandomSickness/Effect" />
+    <MESSAGE value="Changed how output of sicknesses works." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed how output of sicknesses works." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Map.java</url>
-          <line>244</line>
+          <line>249</line>
           <properties class="Map">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
