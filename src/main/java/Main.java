@@ -15,11 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        party = new ArrayList<Person>();
 
         //region Naming declaration
+        if(intinput("1.) Story mode\n2.) Freeplay",2)==2) {
             Random random = new Random();
             List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
-            party = new ArrayList<Person>();
             out.println("Your Party names: ");
 
             //Declaring Father Figure
@@ -37,7 +38,7 @@ public class Main {
             party.add(new Person(age, names, 40, Person.Gender.FEMALE));
 
             //Children generation
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i <= 2; i++) {
                 namepos = random.nextInt(name.size());
                 names = name.get(namepos);
                 out.println(names);
@@ -48,32 +49,71 @@ public class Main {
                     party.add(new Person(age, names, 40, Person.Gender.FEMALE));
                 }
             }
-
             boolean cool = keyboardyn("Is this okay? (y/n)");
-            if (!cool) {out.println("This is MVP, I truly do not care.");}
-//endregion
-
-        //region Career choices
-
-        //Man Career
-        int input = intinput(party.get(0).getName() + "'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer", 3);
-        int startcash = (input == 1) ? 1600 : (input == 2) ? 800 : (input == 3) ? 400 : (input == 4) ? 0 : 1600;        //you happy aaron
-
-
-        //Women's Career?
-        //if we do this the above numbers should be adjusted.
-
-        input = intinput(party.get(1).getName() + "'s Career?\n1.) Apothecary\n2.) Blacksmiths\n3.) Tavern Keeper\n4.) Housewife", 4);
-        startcash += (input == 1) ? 800 : (input == 2) ? 400 : (input == 3) ? 200 : (input == 4) ? 0 : 800;
-
-        //generating
-        inventory = new Inventory(startcash);
+            if (!cool) {
+                out.println("This is MVP, I truly do not care.");
+            }
 
 //endregion
 
+            //region Career choices
+
+            //Man Career
+            int input = intinput(party.get(0).getName() + "'s Career?\n1.) Banker\n2.) Carpenter\n3.) Farmer", 3);
+            int startcash = (input == 1) ? 1600 : (input == 2) ? 800 : (input == 3) ? 400 : (input == 4) ? 0 : 1600;        //you happy aaron
+
+
+            //Women's Career?
+            //if we do this the above numbers should be adjusted.
+
+            input = intinput(party.get(1).getName() + "'s Career?\n1.) Apothecary\n2.) Blacksmiths\n3.) Tavern Keeper\n4.) Housewife", 4);
+            startcash += (input == 1) ? 800 : (input == 2) ? 400 : (input == 3) ? 200 : (input == 4) ? 0 : 800;
+
+            //generating
+            inventory = new Inventory(startcash);
+
+//endregion
+        }
+        else{
+            Random random = new Random();
+            out.println("Your Party names: ");
+
+            //Declaring Father Figure
+            String names = "Charles";
+            out.println(names);
+            int age = random.nextInt(25) + 15;
+            party.add(new Person(age, names, 40, Person.Gender.MALE));
+
+            //Declaring Mother
+            names = "Augusta";
+            out.println(names);
+            age = random.nextInt(25) + 15;
+            party.add(new Person(age, names, 40, Person.Gender.FEMALE));
+
+            //declaring Hattie
+            names = "Hattie";
+            out.println(names);
+            age = 13;
+            party.add(new Person(age, names, 40, Person.Gender.FEMALE));
+
+            //Oh brother.
+            names = "Ben";
+            out.println(names);
+            age = random.nextInt(10)+1;
+            party.add(new Person(age, names, 40, Person.Gender.MALE));
+
+            //Oh bother2.
+            names = "Jake";
+            out.println(names);
+            age = random.nextInt(10)+1;
+            party.add(new Person(age, names, 40, Person.Gender.MALE));
+            inventory = new Inventory(865);
+
+
+        }
         //region Date to leave
         out.println("What month do you wish to leave?");
-        input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
+        int input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
         int day=0;
 
         //Calculating what day to set calendar to
