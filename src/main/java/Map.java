@@ -191,6 +191,7 @@ public class Map {
                 int newHealth;
                 if (num == 0) {
                     newHealth = EffectClass.Sickness(name, "dysentery", health);
+                    addnoti(name+deathfuntion(health)+" dysentery");
                     return newHealth;
                 } else if (num == 1) {
                     newHealth = EffectClass.Sickness(name, "measles", health);
@@ -200,6 +201,11 @@ public class Map {
             else { return health; }
         }
         return health;
+    }
+
+    public String deathfuntion(int health){
+
+return "insert string here";
     }
 
     //A classic to string

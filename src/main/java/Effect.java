@@ -3,6 +3,7 @@ import java.util.Objects;
 public class Effect {
     public int Sickness(String name, String type, int health) {
         if (health <= 20) {
+
             System.out.println(name + " has died.");
             health = 0;
             return health;
