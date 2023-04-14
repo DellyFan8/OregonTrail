@@ -172,8 +172,7 @@ public class Map {
     }
 
     public void RandomEvent() {
-        Random rand = new Random();
-        int randNum = (int) (Math.random() % 100);
+        int randNum = (int) (Math.random() * 100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
             notification.add("Trail lost, you lose two days.");
             advanceDay(false);
@@ -185,7 +184,7 @@ public class Map {
     }
 
     public int RandomSickness(String name, int health) {//name should be replaced with Enum
-        int randSickness = (int) (Math.random() % 100);
+        int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
         if (health != 40) {
             if (randSickness >= 0 && randSickness < (40 - health)) {
