@@ -114,7 +114,7 @@ public class Main {
         //region Date to leave
         out.println("What month do you wish to leave?");
         int input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
-        int day=0;
+        int day = 0;
 
         //Calculating what day to set calendar to
         switch (input){
@@ -193,7 +193,7 @@ public class Main {
             //check for events or store
                 //check for rivers, unsure on stores
             //check for sickness
-                //check
+                //check for sickness recovery
             // check for random events
                 //check
             //play events or town
@@ -266,8 +266,15 @@ public class Main {
                 //Person sickness handling
                 for (int i = 0; i < inventory.personcount(); i++) {
                     inventory.getIndividual(i).setHealth(oregonTrail.RandomSickness(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
-
                 }
+
+                // Where the new sicknessRecovery method will be implemented
+                // Couldn't figure out how to access the "day" variable (recover every 5 days, could be changed)
+                /* if ((day % 5) == 0) {
+                    for (int i = 0; i < inventory.personcount(); i++) {
+                        inventory.getIndividual(i).setHealth(oregonTrail.sicknessRecovery(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
+                    }
+                } */
 
                 oregonTrail.RandomEvent();
 

@@ -196,14 +196,14 @@ public class Map {
                     String type = "dysentery";
                     newHealth = EffectClass.Sickness(type, health);
                     SicknessNotification = EffectClass.SicknessResult(type, health);
-                    healthnoti(name, SicknessNotification, type);
+                    sicknessNoti(name, SicknessNotification, type, newHealth);
                     return newHealth;
                 }
                 else if (num == 1) {
                     String type = "measles";
                     newHealth = EffectClass.Sickness(type, health);
                     SicknessNotification = EffectClass.SicknessResult(type, health);
-                    healthnoti(name, SicknessNotification, type);
+                    sicknessNoti(name, SicknessNotification, type, newHealth);
                     return newHealth;
                 }
             }
@@ -212,8 +212,30 @@ public class Map {
         return health;
     }
 
-    public void healthnoti(String name, String healthNotification, String type) {
-        notification.add(name + healthNotification + type + ".");
+    public int sicknessRecovery(String name, int health) {
+            if (health != 40) {
+                if (health >= 35) {
+                    int newHealth = 40;
+                    String healthNoti = " has fully recovered.";
+                    recoveryNoti(name, healthNoti, newHealth);
+                    return newHealth;
+                }
+                else {
+                    int newHealth = health + 5;
+                    String healthNoti = " has recovered some.";
+                    recoveryNoti(name, healthNoti, newHealth);
+                    return newHealth;
+                }
+            }
+            else { return health; }
+    }
+
+    public void sicknessNoti(String name, String healthNotification, String type, int health) {
+        notification.add(name + healthNotification + type + ". Their health is now " + health + "/40.");
+    }
+
+    public void recoveryNoti(String name, String healthNotification, int health) {
+            notification.add(name + healthNotification + " Their health is now " + health + "/40.");
     }
 
     //A classic to string
