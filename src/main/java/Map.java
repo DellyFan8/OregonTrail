@@ -186,7 +186,6 @@ public class Map {
     public int RandomSickness(String name, int health) {//name should be replaced with Enum
         int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
-        if (health != 40) {
             if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
                 int num = (int) (Math.random() % 2);
@@ -208,7 +207,6 @@ public class Map {
                 }
             }
             else { return health; }
-        }
         return health;
     }
 
