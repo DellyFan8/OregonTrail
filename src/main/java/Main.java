@@ -270,11 +270,11 @@ public class Main {
 
                 // Where the new sicknessRecovery method will be implemented
                 // Couldn't figure out how to access the "day" variable (recover every 5 days, could be changed)
-                /* if ((day % 5) == 0) {
+                if ((oregonTrail.getDaynumber() % 5) == 0) {
                     for (int i = 0; i < inventory.personcount(); i++) {
                         inventory.getIndividual(i).setHealth(oregonTrail.sicknessRecovery(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
                     }
-                } */
+                }
 
                 oregonTrail.RandomEvent();
 

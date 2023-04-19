@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Created new method for characters to recover from sickness over time. Couldn't figure out how to fully implement into main (couldn't access the day number).">
+    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Fixed issue in randomSickness.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,12 +60,20 @@
       <option name="project" value="LOCAL" />
       <updated>1681766745885</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed issue in randomSickness.">
+      <created>1681776847587</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681776847587</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed issue where trail was being lost every day." />
     <MESSAGE value="Created new method for characters to recover from sickness over time. Couldn't figure out how to fully implement into main (couldn't access the day number)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created new method for characters to recover from sickness over time. Couldn't figure out how to fully implement into main (couldn't access the day number)." />
+    <MESSAGE value="Fixed issue in randomSickness." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue in randomSickness." />
   </component>
 </project>

@@ -118,6 +118,10 @@ public class Map {
             return notification.get(index);
         }
 
+        public int getDaynumber() {
+            return daynumber;
+        }
+
         //Calculating miles travelled on a given day
         public int dailyDistanceTravelled(){
             //for testing will be 20, however at some point will need to handle distance calulation
