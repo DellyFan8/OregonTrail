@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Fixed issue in randomSickness.">
+    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Created getDaynumber in Map, and used in main.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
@@ -67,13 +67,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681776847587</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created getDaynumber in Map, and used in main.">
+      <created>1681910587074</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681910587074</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed issue where trail was being lost every day." />
     <MESSAGE value="Created new method for characters to recover from sickness over time. Couldn't figure out how to fully implement into main (couldn't access the day number)." />
     <MESSAGE value="Fixed issue in randomSickness." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue in randomSickness." />
+    <MESSAGE value="Created getDaynumber in Map, and used in main." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created getDaynumber in Map, and used in main." />
   </component>
 </project>

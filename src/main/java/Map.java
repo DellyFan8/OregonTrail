@@ -192,7 +192,7 @@ public class Map {
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
-                int num = (int) (Math.random() % 2);
+                int num = (int) ((Math.random() * 100) % 2);
                 int newHealth;
                 String SicknessNotification;
                 if (num == 0) {
@@ -216,14 +216,14 @@ public class Map {
 
     public int sicknessRecovery(String name, int health) {
             if (health != 40) {
-                if (health >= 35) {
+                if (health >= 37) {
                     int newHealth = 40;
                     String healthNoti = " has fully recovered.";
                     recoveryNoti(name, healthNoti, newHealth);
                     return newHealth;
                 }
                 else {
-                    int newHealth = health + 5;
+                    int newHealth = health + 3;
                     String healthNoti = " has recovered some.";
                     recoveryNoti(name, healthNoti, newHealth);
                     return newHealth;
