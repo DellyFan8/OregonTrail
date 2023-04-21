@@ -182,12 +182,16 @@ public class Map {
             advanceDay(false);
             advanceDay(false);
         }
-        else if (randNum >= 2 && randNum <= 3) { // thief comes during night(2.0%), call event class
+        else if (randNum == 2) {
+            notification.add("Wrong trail, you lose one day.");
+            advanceDay(false);
+        }
+        else if (randNum >= 3 && randNum <= 4) { // thief comes during night(2.0%), call event class
             // eventually will steal items from your inventory
         }
     }
 
-    public int RandomSickness(String name, int health) {//name should be replaced with Enum
+    public int RandomSickness(String name, int health) {
         int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {

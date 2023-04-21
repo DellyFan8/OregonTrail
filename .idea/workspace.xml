@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Created getDaynumber in Map, and used in main.">
+    <list default="true" id="52354b4b-5cf0-4fe7-8812-fea7a371fb6f" name="Changes" comment="Minor changes to fix RandomSickness.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681910587074</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor changes to fix RandomSickness.">
+      <created>1681921785960</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681921785960</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -82,6 +88,7 @@
     <MESSAGE value="Created new method for characters to recover from sickness over time. Couldn't figure out how to fully implement into main (couldn't access the day number)." />
     <MESSAGE value="Fixed issue in randomSickness." />
     <MESSAGE value="Created getDaynumber in Map, and used in main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created getDaynumber in Map, and used in main." />
+    <MESSAGE value="Minor changes to fix RandomSickness." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes to fix RandomSickness." />
   </component>
 </project>
