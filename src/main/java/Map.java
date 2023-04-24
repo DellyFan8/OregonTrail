@@ -8,7 +8,7 @@ import static java.lang.System.out;
 //I think we should probably have a map class
 public class Map {
     public static void main(String[] args){
-
+//region this shouldnt be here
 //        //series of locations for testing
 //        ArrayList<Location> runnerLocations = new ArrayList<>();
 //
@@ -24,12 +24,15 @@ public class Map {
 //        out.println(trail.toString());
 //        out.println("");
 //        out.println(trail.closestloc());
+        //endregion
     }
 
 
         private ArrayList<Location> locations;
         private int playerdistance=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
+        private double dayrain;
+        private double daytemp;
         private int startnumber;
         private ArrayList<String> notification = new ArrayList<>();
 
@@ -98,6 +101,16 @@ public class Map {
             return 0;
         }
 
+    }
+
+
+    public double gettemp(){
+        return closestloc().retrieveweekweather(daynumber).gettemp();
+    }
+
+
+    public double getrain(){
+            return closestloc().retrieveweekweather(daynumber).getrain();
     }
 
 
