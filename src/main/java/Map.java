@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Objects;
 
 import java.io.*;
 
@@ -215,7 +216,7 @@ public class Map {
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
-                int num = (int) (Math.random() % 2);
+                int num = (int) ((Math.random() * 100) % 4);
                 int newHealth;
                 String SicknessNotification;
                 if (num == 0) {
@@ -227,6 +228,20 @@ public class Map {
                 }
                 else if (num == 1) {
                     String type = "measles";
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
+                    sicknessNoti(name, SicknessNotification, type, newHealth);
+                    return newHealth;
+                }
+                else if (num == 2) {
+                    String type = "cholera";
+                    newHealth = EffectClass.Sickness(type, health);
+                    SicknessNotification = EffectClass.SicknessResult(type, health);
+                    sicknessNoti(name, SicknessNotification, type, newHealth);
+                    return newHealth;
+                }
+                else if (num == 3) {
+                    String type = "typhoid fever";
                     newHealth = EffectClass.Sickness(type, health);
                     SicknessNotification = EffectClass.SicknessResult(type, health);
                     sicknessNoti(name, SicknessNotification, type, newHealth);
@@ -256,7 +271,12 @@ public class Map {
     }
 
     public void sicknessNoti(String name, String healthNotification, String type, int health) {
-        notification.add(name + healthNotification + type + ". Their health is now " + health + "/40.");
+            if (Objects.equals(healthNotification, " has died from ")) {
+                notification.add(name + healthNotification + type + ".");
+            }
+            else {
+                notification.add(name + healthNotification + type + ". Their health is now " + health + "/40.");
+            }
     }
 
     public void recoveryNoti(String name, String healthNotification, int health) {
