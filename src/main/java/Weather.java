@@ -12,18 +12,24 @@ public class Weather {
     private double tempmax;
     private double tempmin;
     private double tempmedian;
-
-    public Weather(double rainaverage, double rainmax, double rainmedian, int rainzero) {
-        this.rainaverage = rainaverage;
-        this.rainmax = rainmax;
-        this.rainmedian = rainmedian;
-        this.rainzero = rainzero;
+    public Weather(String rainaverage, String rainmax, String rainmedian, String rainzero, String tempaverage, String tempmax, String tempmin, String tempmedian) {
+        this.rainaverage = Double.parseDouble(rainaverage);
+        this.rainmax = Double.parseDouble(rainmax);
+        this.rainmedian = Double.parseDouble(rainmedian);
+        this.rainzero = Integer.parseInt(rainzero);
+        this.tempaverage = Double.parseDouble(tempaverage);
+        this.tempmax = Double.parseDouble(tempmax);
+        this.tempmin = Double.parseDouble(tempmin);
+        this.tempmedian = Double.parseDouble(tempmedian);
     }
 
     public double getrain(){
+
         return 0;
     }
     public double gettemp(){
         return 0;
+
+
     }
 }

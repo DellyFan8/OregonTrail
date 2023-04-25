@@ -17,7 +17,6 @@ public class Location {
     private String locationname;
     private Event event;
     private Store store;
-    private ArrayList<Weather> weather;
 
     //
     public Location(int milesinfromstart, String locationname, Store store, double storemultiplier, Event event){
@@ -147,10 +146,7 @@ public class Location {
             }
         }
     }
-    public Weather retrieveweekweather(int dayoftravel){
-        int week = dayoftravel/7;
-        return weather.get(week);
-    }
+
 //public void eventStoreHandler(Location eventLocation, int optionNum){
 //
 //

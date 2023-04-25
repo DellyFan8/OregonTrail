@@ -3,12 +3,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
 
+import java.io.*;
+
 import static java.lang.System.out;
 
 //I think we should probably have a map class
 public class Map {
     public static void main(String[] args){
-
+//region this shouldnt be here
 //        //series of locations for testing
 //        ArrayList<Location> runnerLocations = new ArrayList<>();
 //
@@ -29,8 +31,11 @@ public class Map {
 
 
         private ArrayList<Location> locations;
+        private ArrayList<WeatherRegion> weatherregion;
         private int playerdistance=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
+        private double dayrain;
+        private int daytemp;
         private int startnumber;
         private ArrayList<String> notification = new ArrayList<>();
 
@@ -101,10 +106,18 @@ public class Map {
 
     }
 
-    public double gettemp() {return closestloc().retrieveweekweather(daynumber).gettemp();}
+
+    public double gettemp(){
+        //return closestloc().retrieveweekweather(daynumber).gettemp();
+        return 0;
+    }
 
 
-    public double getrain() {return closestloc().retrieveweekweather(daynumber).getrain();}
+    public double getrain(){
+            //return closestloc().retrieveweekweather(daynumber).getrain();
+        return 0;
+    }
+
 
     //add a notification to be displayed
         public void addnoti(String runnernotification){
@@ -197,7 +210,7 @@ public class Map {
         }
     }
 
-    public int RandomSickness(String name, int health) {//name should be replaced with Enum
+    public int RandomSickness(String name, int health) {
         int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {
@@ -288,5 +301,10 @@ public class Map {
         {
             Thread.currentThread().interrupt();
         }
+    }
+    static void weatherhandler(){
+           File fileloc = new File("src\\main\\resources\\Weatherdata1.csv");
+
+
     }
 }
