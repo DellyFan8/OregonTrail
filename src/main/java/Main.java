@@ -269,7 +269,7 @@ public class Main {
                 }
 
                 // Where the new sicknessRecovery method will be implemented (recovery every 5 days, could be changed later)
-                if ((oregonTrail.getDaynumber() % 5) == 0) {
+                if ((oregonTrail.getDayNumber() % 5) == 0) {
                     for (int i = 0; i < inventory.personcount(); i++) {
                         inventory.getIndividual(i).setHealth(oregonTrail.sicknessRecovery(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
                     }

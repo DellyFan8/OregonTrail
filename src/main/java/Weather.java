@@ -21,16 +21,9 @@ public class Weather {
     }
 
     public double getrain(){
-        Random rand= new Random();
-        if (rand.nextInt(0,70)>this.rainzero){
-            return rand.nextDouble(0,this.rainmax);
-        }
         return 0;
     }
     public double gettemp(){
-        Random rand = new Random();
-        return rand.nextDouble(tempmin,tempmax);
-
-
+        return 0;
     }
 }

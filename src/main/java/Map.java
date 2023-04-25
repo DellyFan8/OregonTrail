@@ -8,7 +8,7 @@ import static java.lang.System.out;
 //I think we should probably have a map class
 public class Map {
     public static void main(String[] args){
-//region this shouldnt be here
+
 //        //series of locations for testing
 //        ArrayList<Location> runnerLocations = new ArrayList<>();
 //
@@ -31,8 +31,6 @@ public class Map {
         private ArrayList<Location> locations;
         private int playerdistance=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
-        private double dayrain;
-        private double daytemp;
         private int startnumber;
         private ArrayList<String> notification = new ArrayList<>();
 
@@ -103,16 +101,10 @@ public class Map {
 
     }
 
-
-    public double gettemp(){
-        return closestloc().retrieveweekweather(daynumber).gettemp();
-    }
+    public double gettemp() {return closestloc().retrieveweekweather(daynumber).gettemp();}
 
 
-    public double getrain(){
-            return closestloc().retrieveweekweather(daynumber).getrain();
-    }
-
+    public double getrain() {return closestloc().retrieveweekweather(daynumber).getrain();}
 
     //add a notification to be displayed
         public void addnoti(String runnernotification){
@@ -131,7 +123,7 @@ public class Map {
             return notification.get(index);
         }
 
-        public int getDaynumber() {
+        public int getDayNumber(){
             return daynumber;
         }
 
@@ -196,20 +188,21 @@ public class Map {
             advanceDay(false);
         }
         else if (randNum == 2) {
-            notification.add("Wrong trail, you lose one day.");
+            notification.add("Trail lost, you lose two days.");
             advanceDay(false);
         }
-        else if (randNum >= 3 && randNum <= 4) { // thief comes during night(2.0%), call event class
-            // eventually will steal items from your inventory
+        else if (randNum >= 3 && randNum <= 4) {
+            // thief comes during night (2.0%), call event class
+            //eventually will steal items from your inventory
         }
     }
 
-    public int RandomSickness(String name, int health) {
+    public int RandomSickness(String name, int health) {//name should be replaced with Enum
         int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {
                 // one of the random sicknesses is given to this person
-                int num = (int) ((Math.random() * 100) % 2);
+                int num = (int) (Math.random() % 2);
                 int newHealth;
                 String SicknessNotification;
                 if (num == 0) {
@@ -233,14 +226,14 @@ public class Map {
 
     public int sicknessRecovery(String name, int health) {
             if (health != 40) {
-                if (health >= 37) {
+                if (health >= 35) {
                     int newHealth = 40;
                     String healthNoti = " has fully recovered.";
                     recoveryNoti(name, healthNoti, newHealth);
                     return newHealth;
                 }
                 else {
-                    int newHealth = health + 3;
+                    int newHealth = health + 5;
                     String healthNoti = " has recovered some.";
                     recoveryNoti(name, healthNoti, newHealth);
                     return newHealth;
