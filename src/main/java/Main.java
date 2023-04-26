@@ -12,9 +12,7 @@ public class Main {
 //Needs:
     //River crossings
     //Career select
-
     public static void main(String[] args) {
-
         party = new ArrayList<Person>();
 
         //region Naming declaration
@@ -158,7 +156,6 @@ public class Main {
 
         //Declare Oregon Trail Map
         oregonTrail = new Map(runnerLocations, inventory, day);
-
         //region Shopping!
         out.println("You need to go shopping before you can depart.");
 
@@ -169,14 +166,17 @@ public class Main {
 
         oregonTrail.addnoti("Today we left "+oregonTrail.closestloc().getLocationName()+".");
         oregonTrail.addnoti("We bought X items while there.");
-        oregonTrail.dayDisplay(20);
         //endregion
 
         // Play game
+        oregonTrail.setRainandTemp();
+        oregonTrail.dayDisplay(20);
         playGame();
+
     }
 
     public static void playGame(){
+        oregonTrail.setRainandTemp();
         //declaring stuff
         Scanner keyboard = new Scanner(System.in);
         boolean keepGoing = true;

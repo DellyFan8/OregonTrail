@@ -44,18 +44,29 @@ public class WeatherRegion {
         } finally {
             scan.close();
         }
-        out.println(this.startmilage);
-        out.println(this.endmilage);
+
         this.weather = weatherrunners;
-        out.println(this.weather.toString());
     }
     boolean inregion(int milage){
-        if (milage>startmilage&& milage<endmilage)
+        if (milage>startmilage&& milage<=endmilage)
             return true;
         return false;
 
     }
-
-
-
+    double setrain(int day){
+        int week = day/7;
+        return weather.get(week).getrain();
+    }
+    int settemp(int day){
+        int week = day/7;
+        return weather.get(week).gettemp();
+    }
+    @Override
+    public String toString() {
+        return "WeatherRegion{" +
+                "weather=" + weather +
+                ", startmilage=" + startmilage +
+                ", endmilage=" + endmilage +
+                '}';
+    }
 }

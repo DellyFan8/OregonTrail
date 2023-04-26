@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Objects;
 
 import java.io.*;
@@ -32,7 +31,7 @@ public class Map {
 
 
         private ArrayList<Location> locations;
-        private ArrayList<WeatherRegion> weatherregion;
+        private ArrayList<WeatherRegion> weatherregion= new ArrayList<WeatherRegion>();
         private int playerdistance=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
         private double dayrain;
@@ -45,6 +44,12 @@ public class Map {
             this.locations = locations;
             this.daynumber=day;
             this.startnumber=day;
+            weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather1.csv")));
+            weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather2.csv")));
+            weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather3.csv")));
+            weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather4.csv")));
+            weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather5.csv")));
+
         }
 
         public int distanceto(Location target){
@@ -52,7 +57,7 @@ public class Map {
 
         }
 
-    public int getPlayerdistance() {
+        public int getPlayerdistance() {
         return playerdistance;
     }
 
@@ -73,7 +78,7 @@ public class Map {
         public int advanceDay() {
             int dist = dailyDistanceTravelled();
             int distanceToNextLocation = distanceto(closestloc());
-
+            setRainandTemp();
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 playerdistance+=distanceToNextLocation;
                 daynumber++;
@@ -90,34 +95,36 @@ public class Map {
         }
 
         //handling if user decides to wait somewhere, not implemented elsewhere but may be eventually
-    public int advanceDay(boolean dayadvance) {
-        int dist = dailyDistanceTravelled();
-        int distanceToNextLocation = distanceto(closestloc());
+        public int advanceDay(boolean dayadvance) {
+            int dist = dailyDistanceTravelled();
+            int distanceToNextLocation = distanceto(closestloc());
+            setRainandTemp();
+            if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
+                daynumber++;
 
-        if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
-            daynumber++;
+                //needs to be done separately
+                return 0;
+            }
+            else {
+                daynumber++;
+                return 0;
+            }
 
-            //needs to be done separately
-            return 0;
         }
-        else {
-            daynumber++;
-            return 0;
+        public void setRainandTemp(){
+
+            this.dayrain= weatherregion.get(findregion()).setrain(this.daynumber);
+            this.daytemp= weatherregion.get(findregion()).settemp(this.daynumber);
         }
 
-    }
+        public double gettemp(){
+            return daytemp;
+        }
 
 
-    public double gettemp(){
-        //return closestloc().retrieveweekweather(daynumber).gettemp();
-        return 0;
-    }
-
-
-    public double getrain(){
-            //return closestloc().retrieveweekweather(daynumber).getrain();
-        return 0;
-    }
+        public double getrain(){
+            return dayrain;
+        }
 
 
     //add a notification to be displayed
@@ -166,11 +173,11 @@ public class Map {
 //    }
 
     //display what events happened that day
-    public void dayDisplay(int distanceTravelled){
-    //display day related information every time a day advances
+        public void dayDisplay(int distanceTravelled){
+        //display day related information every time a day advances
         // record names of places entered, rivers crossed etc
 
-//Use we or you?
+        //Use we or you?
 
            out.println("Today you travelled "+ distanceTravelled+" miles.");
            if (distanceto()== 0)
@@ -182,6 +189,12 @@ public class Map {
 //               }
            }
            else out.println(distanceto()+" miles to "+closestloc().getLocationName()+".");
+
+           //weather printing
+           out.println(weatherString());
+
+
+
         if (notification.size()!=0){
                for (int i = 0; i <notification.size() ; i++) {
                    out.println(getnoti(i));
@@ -194,7 +207,7 @@ public class Map {
 
     }
 
-    public void RandomEvent() {
+        public void RandomEvent() {
         int randNum = (int) (Math.random() * 100);
         if (randNum >= 0 && randNum <= 1) { // lose trail(2.0%), call event class
             notification.add("Trail lost, you lose two days.");
@@ -211,7 +224,7 @@ public class Map {
         }
     }
 
-    public int RandomSickness(String name, int health) {
+        public int RandomSickness(String name, int health) {
         int randSickness = (int) (Math.random() * 100);
         Effect EffectClass = new Effect();
             if (randSickness >= 0 && randSickness < (40 - health)) {
@@ -252,7 +265,7 @@ public class Map {
         return health;
     }
 
-    public int sicknessRecovery(String name, int health) {
+        public int sicknessRecovery(String name, int health) {
             if (health != 40) {
                 if (health >= 35) {
                     int newHealth = 40;
@@ -270,7 +283,7 @@ public class Map {
             else { return health; }
     }
 
-    public void sicknessNoti(String name, String healthNotification, String type, int health) {
+        public void sicknessNoti(String name, String healthNotification, String type, int health) {
             if (Objects.equals(healthNotification, " has died from ")) {
                 notification.add(name + healthNotification + type + ".");
             }
@@ -279,22 +292,25 @@ public class Map {
             }
     }
 
-    public void recoveryNoti(String name, String healthNotification, int health) {
+        public void recoveryNoti(String name, String healthNotification, int health) {
             notification.add(name + healthNotification + " Their health is now " + health + "/40.");
     }
 
     //A classic to string
+
+
     @Override
     public String toString() {
-        return "RelearningJavaEt{" +
-                "Locations=" + locations +
+        return "Map{" +
+                "locations=" + locations +
+                ", weatherregion=" + weatherregion +
                 ", playerdistance=" + playerdistance +
-                ", daynumber=" + daynumber +
+                ", startnumber=" + startnumber +
                 '}';
     }
 
     //Funtion to take date current day count and return a formatted string
-    public String toDate() {
+        public String toDate() {
             int numdate= this.daynumber;
             LocalDate date = LocalDate.of(1850, 3, 1).plusDays(numdate);
             String formattedDate = date.format(DateTimeFormatter.ofPattern("MMMM d")); // format as "MonthName day"
@@ -302,7 +318,7 @@ public class Map {
     }
 
     //Functing to display the date
-    public void datedisplay(){
+        public void datedisplay(){
         String date = "Day "+(daynumber-startnumber)+", "+toDate()+":";
         for (int i = 0; i <date.length() ; i++) {
             out.print(date.charAt(i));
@@ -311,8 +327,8 @@ public class Map {
         out.print("\n");
     }
 
-    //A terrible funtion to wait
-    static void wait(int ms) {
+        //A terrible funtion to wait
+        static void wait(int ms) {
         try
         {
             Thread.sleep(ms);
@@ -322,9 +338,24 @@ public class Map {
             Thread.currentThread().interrupt();
         }
     }
-    static void weatherhandler(){
-           File fileloc = new File("src\\main\\resources\\Weatherdata1.csv");
-
-
+        public int findregion(){
+            int i = 0;
+            for (WeatherRegion region: this.weatherregion) {
+                if (region.inregion(this.playerdistance)){return i;}
+                i++;
+            }
+            //if this ever gets returned, it is time to panic
+            return 0;
     }
+        public String weatherString(){
+            String stringname= new String("Today was ");
+            int temp = (this.daytemp*(9/5))+32;
+            stringname= stringname+temp+" and ";
+            if (this.dayrain==0)
+                return stringname+"Sunny.";
+            else {
+                if(this.daytemp>0) return stringname+"Rainy.";
+                else return stringname+"Snowy.";
+            }
+        }
 }
