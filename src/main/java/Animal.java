@@ -1,7 +1,7 @@
 public class Animal extends Item{
     //Adds custom types of each item (controls behavior in standardized form)
     public enum Type {HORSE, OXEN, MULE}
-    private Food.Type type;
+    private final Food.Type type;
 
 
     public Animal(Food.Type type, String name, double weight){

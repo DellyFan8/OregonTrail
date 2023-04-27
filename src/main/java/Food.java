@@ -1,7 +1,7 @@
 public class Food extends Item{
     //Adds custom types of each item (controls behavior in standardized form)
     public enum Type {FOOD, WATER}
-    private Type type;
+    private final Type type;
 
 
     public Food(Type type, String name, double weight){

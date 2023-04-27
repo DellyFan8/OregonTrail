@@ -30,14 +30,15 @@ public class Map {
     }
 
 
-        private ArrayList<Location> locations;
-        private ArrayList<WeatherRegion> weatherregion= new ArrayList<WeatherRegion>();
+        private final ArrayList<Location> locations;
+        private final ArrayList<WeatherRegion> weatherregion= new ArrayList<WeatherRegion>();
         private int playerdistance=0;
+        private int waterTableincrease=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
         private double dayrain;
         private int daytemp;
-        private int startnumber;
-        private ArrayList<String> notification = new ArrayList<>();
+        private final int startnumber;
+        private final ArrayList<String> notification = new ArrayList<>();
 
 
         public Map(ArrayList<Location> locations, Inventory inventory, int day) {
@@ -113,8 +114,13 @@ public class Map {
         }
         public void setRainandTemp(){
 
+            this.waterTableincrease+=this.dayrain*1.75;
             this.dayrain= weatherregion.get(findregion()).setrain(this.daynumber);
             this.daytemp= weatherregion.get(findregion()).settemp(this.daynumber);
+            if (waterTableincrease>0)
+                this.waterTableincrease= (int) (this.waterTableincrease-((0.4*this.waterTableincrease)+2));
+            else
+                this.waterTableincrease=0;
         }
 
         public double gettemp(){
@@ -348,8 +354,8 @@ public class Map {
             return 0;
     }
         public String weatherString(){
-            String stringname= new String("Today was ");
-            int temp = (this.daytemp*(9/5))+32;
+            String stringname= "Today was ";
+            int temp = (this.daytemp)+32;
             stringname= stringname+temp+" and ";
             if (this.dayrain==0)
                 return stringname+"Sunny.";

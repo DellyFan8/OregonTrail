@@ -3,15 +3,15 @@ import java.util.Random;
 public class Weather {
 //Note: Rain data is in mm and temp is C.
     //could possibly use float
-    private double rainaverage;
-    private double rainmax;
-    private double rainmedian;
-    private int rainzero;
+    private final double rainaverage;
+    private final double rainmax;
+    private final double rainmedian;
+    private final int rainzero;
 
-    private double tempaverage;
-    private double tempmax;
-    private double tempmin;
-    private double tempmedian;
+    private final double tempaverage;
+    private final double tempmax;
+    private final double tempmin;
+    private final double tempmedian;
     public Weather(String rainaverage, String rainmax, String rainmedian, String rainzero, String tempaverage, String tempmax, String tempmin, String tempmedian) {
         this.rainaverage = Double.parseDouble(rainaverage);
         this.rainmax = Double.parseDouble(rainmax);
@@ -29,7 +29,7 @@ public class Weather {
             return 0;
         }
         else {
-            String rain= String.valueOf(rand.nextInt((int) rainmax))+"."+String.valueOf(rand.nextInt(10));
+            String rain= rand.nextInt((int) rainmax) +"."+ rand.nextInt(10);
             return Double.parseDouble(rain);
 
         }

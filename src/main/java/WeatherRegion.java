@@ -6,7 +6,7 @@ import java.util.Scanner;
 import static java.lang.System.out;
 
 public class WeatherRegion {
-    private ArrayList<Weather> weather;
+    private final ArrayList<Weather> weather;
     private int startmilage;
     private int endmilage;
 
@@ -48,9 +48,7 @@ public class WeatherRegion {
         this.weather = weatherrunners;
     }
     boolean inregion(int milage){
-        if (milage>startmilage&& milage<=endmilage)
-            return true;
-        return false;
+        return milage > startmilage && milage <= endmilage;
 
     }
     double setrain(int day){

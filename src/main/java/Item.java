@@ -1,9 +1,9 @@
 public class Item {
 
     //Does not impact anything other than display text
-    private String name;
+    private final String name;
     //Item weight in pounds
-    private double weight;
+    private final double weight;
     private int quantity;
     public Item(){
         name = "UNDEFINED ITEM NAME";

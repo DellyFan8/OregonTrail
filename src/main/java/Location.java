@@ -82,7 +82,7 @@ public class Location {
         boolean stayInStore = true;
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to "+store.getName()+"! Below are our items:\n");
-        while(stayInStore==true){
+        while(stayInStore){
             System.out.println(store);
             System.out.println("You have "+store.getInventory().getDollars());
             System.out.println("What number item do you want? Enter -1 to leave instead");
@@ -108,7 +108,7 @@ public class Location {
             }
             System.out.println("Leave? (y/n)");
             String stayString = keyboard.next();
-            if(stayString.toUpperCase().equals("Y")){
+            if(stayString.equalsIgnoreCase("Y")){
                 stayInStore = false;
             }
         }
@@ -118,7 +118,7 @@ public class Location {
         out.println("Welcome to "+locationname);
         Scanner keyboard = new Scanner(in);
         boolean menu = true;
-        while(menu==true){
+        while(menu){
             out.println("1.) Look Around");
             int optionNum = 2;
             int storeOption = -1;

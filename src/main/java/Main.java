@@ -211,7 +211,7 @@ public class Main {
 
             //region Menu
             boolean menu = true;
-            while(menu==true){
+            while(menu){
                 out.println("1.) View Party\n2.) View Inventory");
                 int optionNum = 3;
                 if (oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0 && oregonTrail.closestloc().hasStore()) {
@@ -257,7 +257,7 @@ public class Main {
                 }
                     if (oregonTrail.closestloc().hasEvent()) {
                         if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
-                            if (riverEvent(oregonTrail.closestloc())) {
+                            if (riverEvent(oregonTrail.closestloc(),oregonTrail)) {
                             } else {
                             }
                         }
@@ -315,7 +315,7 @@ public class Main {
 
 
     //deals with river crossings when called
-    static boolean riverEvent(Location eventLocation){
+    static boolean riverEvent(Location eventLocation, Map oregonTrail){
         //insert chances and effects for crossing river, may need to be passed inventory
 
         Random rand = new Random();

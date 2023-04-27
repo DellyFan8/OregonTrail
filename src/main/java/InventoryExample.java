@@ -29,7 +29,7 @@ public class InventoryExample {
         boolean stay = true;
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to "+store.getName()+"! Below are our items:\n");
-        while(stay==true){
+        while(stay){
             System.out.println(store);
             System.out.println("You have "+store.getInventory().getDollars());
             System.out.println("What number item do you want?");
@@ -52,7 +52,7 @@ public class InventoryExample {
             }
             System.out.println("Leave? (y/n)");
             String stayString = keyboard.next();
-            if(stayString.toUpperCase().equals("Y")){
+            if(stayString.equalsIgnoreCase("Y")){
                 stay = false;
             }
         }

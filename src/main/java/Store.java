@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Store {
     private String name;
-    private ArrayList<StoreItem> storeItems;
+    private final ArrayList<StoreItem> storeItems;
 
     private Inventory inventory;
 

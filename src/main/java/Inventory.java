@@ -32,7 +32,7 @@ public class Inventory {
                 found = true;
             }
         }
-        if(found==false){
+        if(!found){
             items.add(item);
         }
     }
