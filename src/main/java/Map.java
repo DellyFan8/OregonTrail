@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import java.io.*;
+import java.util.Random;
 
 import static java.lang.System.out;
 
@@ -29,7 +30,8 @@ public class Map {
         //endregion
     }
 
-
+        private int pace=3;
+        private int rations=3;
         private final ArrayList<Location> locations;
         private final ArrayList<WeatherRegion> weatherregion= new ArrayList<WeatherRegion>();
         private int playerdistance=0;
@@ -113,7 +115,6 @@ public class Map {
 
         }
         public void setRainandTemp(){
-
             this.waterTableincrease+=this.dayrain*1.75;
             this.dayrain= weatherregion.get(findregion()).setrain(this.daynumber);
             this.daytemp= weatherregion.get(findregion()).settemp(this.daynumber);
@@ -154,11 +155,18 @@ public class Map {
             return daynumber;
         }
 
-        //Calculating miles travelled on a given day
-        public int dailyDistanceTravelled(){
-            //for testing will be 20, however at some point will need to handle distance calulation
-            //may need to be passed information
-            return 20;
+    //Calculating miles travelled on a given day
+    public int dailyDistanceTravelled(){
+        Random rand = new Random();
+        int distancetravelled;
+        distancetravelled=(pace*5);
+        if (this.rations>3)
+            distancetravelled+=rand.nextInt(4);
+        else if (this.rations<3)
+            distancetravelled-=rand.nextInt(2);
+        if(pace<=2)distancetravelled+=3;
+        return (int)((distancetravelled* (.75+(.25)*rand.nextDouble())+2));
+
         }
 //    Legacy funtion:
 //    public void dayDisplay(){
@@ -319,11 +327,10 @@ public class Map {
         public String toDate() {
             int numdate= this.daynumber;
             LocalDate date = LocalDate.of(1850, 3, 1).plusDays(numdate);
-            String formattedDate = date.format(DateTimeFormatter.ofPattern("MMMM d")); // format as "MonthName day"
-            return  formattedDate;
+            return date.format(DateTimeFormatter.ofPattern("MMMM d")); // format as "MonthName day"
     }
 
-    //Functing to display the date
+        //Functing to display the date
         public void datedisplay(){
         String date = "Day "+(daynumber-startnumber)+", "+toDate()+":";
         for (int i = 0; i <date.length() ; i++) {
@@ -332,7 +339,6 @@ public class Map {
         }
         out.print("\n");
     }
-
         //A terrible funtion to wait
         static void wait(int ms) {
         try
@@ -357,9 +363,12 @@ public class Map {
             String stringname= "Today was ";
             int temp = (this.daytemp)+32;
             stringname= stringname+temp+" and ";
-            if (this.dayrain==0)
-                return stringname+"Sunny.";
-            else {
+            if (this.dayrain==0) {
+                Random rand = new Random();
+                if (rand.nextInt(10)>4)
+                    return stringname + "Sunny.";
+                return stringname+ " Cloudy";
+            } else {
                 if(this.daytemp>0) return stringname+"Rainy.";
                 else return stringname+"Snowy.";
             }
