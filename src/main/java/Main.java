@@ -1,3 +1,5 @@
+import org.apache.poi.ss.formula.atp.Switch;
+
 import java.util.*;
 
 import static java.lang.System.out;
@@ -139,7 +141,7 @@ public class Main {
         runnerLocations.add(new Location(0,"Independence",new Store("Independence Wholesale", inventory), 1));
 
         //KR crossing information
-        Event krCrossing = new Event(Event.EventType.RIVERCROSSING);
+        Event krCrossing = new Event(Event.EventType.RIVERCROSSING,1450.848,true);
         runnerLocations.add(new Location(102, "Kansas River crossing",krCrossing));
 
         //BBR crossing information
@@ -170,7 +172,6 @@ public class Main {
 
         // Play game
         oregonTrail.setRainandTemp();
-        oregonTrail.dayDisplay(20);
         playGame();
 
     }
@@ -336,27 +337,57 @@ public class Main {
         Random rand = new Random();
 
         out.println("You find yourself at "+eventLocation.getLocationName()+".");
-        if(keyboardyn("Do you want to cross the River?")) {
-            //Random River nonsense
-            switch (rand.nextInt(5)) {
+        out.println(returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())));
+        int input;
+        boolean crossed;
+        do {
+
+
+            //region outputting river prompt based off of river type
+            crossed=false;
+            if(eventLocation.getEvent().isHasFerry()==true)
+                input =intinput("How do you want to cross the river?\n1.) Attempt to ford the river\n2.) Caulk the wagon and float it across\n3.) Wait to see if conditions improve\n4.) Take ferry across\n",4);
+            else
+                input = intinput("How do you want to cross the river?\n1.) Attempt to ford the river\n2.) Caulk the wagon and float it across\n3.) Wait to see if conditions improve\n",3);
+            //endregion
+            //Switch based off of route of crossing river
+            switch (input){
+
+                //region Fording river
                 case 1:
-                    out.println("you lost some items: Insert items lost here");
-                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today, but lost *insert items here*");
+                    out.println("You ford the river ");
+                    crossed=true;
                     break;
+
+
+                    //endregion
+                //region Caulking river
                 case 2:
-                    out.println("You should've died. but we haven't implemented death yet");
-                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today."+" And should have died");
+                    out.println("You caulk your wagon and float across.");
+                    crossed=true;
                     break;
-                default:
-                    out.println("you successfully crossed the " + eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9) + ".");
-                    oregonTrail.addnoti("We crossed "+eventLocation.getLocationName().substring(0, eventLocation.getLocationName().length() - 9)+" Today.");
+
+                    //endregion
+                //region waiting by river
+                case 3:
+                    out.println("You wait a day by the river");
+                    oregonTrail.advanceDay();
+                    returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease()));
+                    crossed=false;
                     break;
-            }
-            return true;
-        }
-        else{
-            return false;
-            }
+                    //endregion
+                //region Ferry
+                case 4:
+                    out.println("ferry");
+                    crossed=true;
+                    break;
+                    //endregion
+
+                }
+            }while(crossed==false);
+
+
+        return true;
         }
 
         //another terrible wait
@@ -370,5 +401,16 @@ public class Main {
             Thread.currentThread().interrupt();
         }
     }
+    static String returnriver(double riverheight){
+        String output= "The river is "+(int)(riverheight/12)+" feet ";
+        if((int)(riverheight%12)!=0)
+            output=output+ ((int)(riverheight%12)+" inches ");
+        return (output+"deep.");
     }
+
+
+
+
+    }
+
 

@@ -76,6 +76,10 @@ public class Map {
             return pace;
         }
 
+        public int getWaterTableincrease() {
+            return waterTableincrease;
+        }
+
         public int getRations() {
             return rations;
         }
@@ -131,7 +135,7 @@ public class Map {
 
         }
         public void setRainandTemp(){
-            this.waterTableincrease+=this.dayrain*1.75;
+            this.waterTableincrease+=this.dayrain*2;
             this.dayrain= weatherregion.get(findregion()).setrain(this.daynumber);
             this.daytemp= weatherregion.get(findregion()).settemp(this.daynumber);
             if (waterTableincrease>0)
@@ -383,7 +387,7 @@ public class Map {
                 Random rand = new Random();
                 if (rand.nextInt(10)>4)
                     return stringname + "Sunny.";
-                return stringname+ " Cloudy";
+                return stringname+ "Cloudy";
             } else {
                 if(this.daytemp>0) return stringname+"Rainy.";
                 else return stringname+"Snowy.";
