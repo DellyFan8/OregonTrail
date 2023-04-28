@@ -64,6 +64,22 @@ public class Map {
         return playerdistance;
     }
 
+        public void setPace(int pace) {
+            this.pace = pace;
+        }
+
+        public void setRations(int rations) {
+            this.rations = rations;
+        }
+
+        public int getPace() {
+            return pace;
+        }
+
+        public int getRations() {
+            return rations;
+        }
+
     //default to next location.
         public int distanceto(){
             return distanceto(closestloc());

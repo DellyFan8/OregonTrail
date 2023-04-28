@@ -16,7 +16,7 @@ public class Main {
         party = new ArrayList<Person>();
 
         //region Naming declaration
-        if(intinput("1.) Story mode\n2.) Freeplay",2)==2) {
+        if(intinput("1.) Story mode\n2.) Freeplay\n",2)==2) {
             Random random = new Random();
             List<String> name = Arrays.asList("John", "William", "James", "George", "Charles", "Joseph", "Robert", "Henry", "Edward", "Thomas", "Samuel", "David", "Frank", "Benjamin", "Andrew", "Peter", "Daniel", "Isaac", "Michael", "Abraham", "Mary", "Elizabeth", "Sarah", "Margaret", "Susan", "Ann", "Jane", "Emily", "Emma", "Catherine", "Caroline", "Martha", "Harriet", "Ellen", "Julia", "Alice", "Rebecca", "Hannah", "Louisa", "Frances");
             out.println("Your Party names: ");
@@ -111,7 +111,7 @@ public class Main {
         }
         //region Date to leave
         out.println("What month do you wish to leave?");
-        int input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July",5);
+        int input = intinput("1.) March\n2.) April\n3.) May\n4.) June\n5.) July\n",5);
         int day = 0;
 
         //Calculating what day to set calendar to
@@ -212,8 +212,8 @@ public class Main {
             //region Menu
             boolean menu = true;
             while(menu){
-                out.println("1.) View Party\n2.) View Inventory");
-                int optionNum = 3;
+                out.println("1.) View Party\n2.) View Inventory\n3.) Change Pace and Rations");
+                int optionNum = 4;
                 if (oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0 && oregonTrail.closestloc().hasStore()) {
                     out.println(optionNum + ".) Go into town");
                     townOption = optionNum;
@@ -228,7 +228,11 @@ public class Main {
 
                 if (option == 1)
                     out.println(party.toString());
+                else if (option==3) {
+                    oregonTrail.setRations(intinput("Current Rations: "+oregonTrail.getRations()+"\nSet rations (1 to 5, 1 being low rations):",1,5));
+                    oregonTrail.setPace(intinput("Current Pace: "+oregonTrail.getPace()+"\nSet pace (1 to 5, 1 being low Pace):",1,5));
 
+                }
                 else if (option < 1 || option > optionNum)
                     out.println("Please select something that is an option");
 
@@ -306,9 +310,20 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         int answer;
         do {
-            out.println(output);
+            out.print(output);
             answer = keyboard.nextInt();
         }while (!(answer <=upperbound));
+        return answer;
+
+    }
+    static int intinput(String output,int lowebound, int upperbound){
+
+        Scanner keyboard = new Scanner(System.in);
+        int answer;
+        do {
+            out.println(output);
+            answer = keyboard.nextInt();
+        }while (!(answer>=lowebound&&answer<=upperbound));
         return answer;
 
     }
