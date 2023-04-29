@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Inventory {
     //Stores all items for game
@@ -86,6 +87,25 @@ public class Inventory {
     }
     public Person getIndividual(int index){
         return getPeopleinparty().get(index);
+    }
+
+
+    //breaks a wagon part
+    public Item brokenWagonpart(){
+        Random rand = new Random();
+
+
+
+        return null;
+    }
+
+
+    //this function will iterate through all items and return an array of all items of a certain type, Food
+    public ArrayList<Item> getitemtypes(){
+        for (Item item:items) {
+            item.getClass();
+        }
+        return null;
     }
 
     public ArrayList<Item> getItems(){
