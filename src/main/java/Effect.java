@@ -1,6 +1,28 @@
 import java.util.Objects;
 
 public class Effect {
+    enum Type {Dysentery, Cholera, Measles, Tyhoidfever}
+    Type effecttype;
+
+    public Effect(Type type){
+        this.effecttype= type;
+
+    }
+
+    public Type getEffecttype() {
+        return effecttype;
+    }
+    public String sicknessName(){
+        if (effecttype==Type.Dysentery){
+            return "Dysentery";
+        }if (effecttype==Type.Cholera){
+            return "Cholera";
+        }if (effecttype==Type.Measles){
+            return "Measles";
+        }else
+            return "Typhoid fever";
+    }
+
     public int Sickness(String type, int health) {
         if (Objects.equals(type, "dysentery") || Objects.equals(type, "cholera")) {
             if (health <= 20) {
@@ -35,5 +57,13 @@ public class Effect {
         else {
             return (" got ");
         }
+    }
+
+
+    @Override
+    public String toString() {
+        return "Effect{" +
+                "effecttype=" + effecttype +
+                '}';
     }
 }

@@ -29,14 +29,14 @@ public class Store {
         storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
         storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
         storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
-        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wagon Wheel",20),4,25));
-        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Wagon Axle",20),4,25));
-        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Wagon Tongue",20),4,25));
-        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet Case",5),30,10));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wheel",20),4,25));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Axle",20),4,25));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Tongue",20),4,25));
+        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet",5),30,10));
 
         if (storenum==0)
         {
-            storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Ox,"Ox", 0),8,60));
+            storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Ox,"Oxen", 0),8,60));
         }
 
     }

@@ -108,6 +108,7 @@ public class Map {
             int dist = dailyDistanceTravelled();
             int distanceToNextLocation = distanceto(closestloc());
             setRainandTemp();
+            sicknesshandler();
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 playerdistance+=distanceToNextLocation;
                 daynumber++;
@@ -128,6 +129,7 @@ public class Map {
             int dist = dailyDistanceTravelled();
             int distanceToNextLocation = distanceto(closestloc());
             setRainandTemp();
+            sicknesshandler();
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 daynumber++;
 
@@ -247,7 +249,6 @@ public class Map {
            }
            }
 
-           out.println("Daily log of injuries, illnesses, events, etc. goes here");
            clearnoti();
            out.println();
 
@@ -270,46 +271,28 @@ public class Map {
         }
     }
 
-        public int RandomSickness(String name, int health) {
-        int randSickness = (int) (Math.random() * 100);
-        Effect EffectClass = new Effect();
-            if (randSickness >= 0 && randSickness < (40 - health)) {
-                // one of the random sicknesses is given to this person
-                int num = (int) ((Math.random() * 100) % 4);
-                int newHealth;
-                String SicknessNotification;
-                if (num == 0) {
-                    String type = "dysentery";
-                    newHealth = EffectClass.Sickness(type, health);
-                    SicknessNotification = EffectClass.SicknessResult(type, health);
-                    sicknessNoti(name, SicknessNotification, type, newHealth);
-                    return newHealth;
-                }
-                else if (num == 1) {
-                    String type = "measles";
-                    newHealth = EffectClass.Sickness(type, health);
-                    SicknessNotification = EffectClass.SicknessResult(type, health);
-                    sicknessNoti(name, SicknessNotification, type, newHealth);
-                    return newHealth;
-                }
-                else if (num == 2) {
-                    String type = "cholera";
-                    newHealth = EffectClass.Sickness(type, health);
-                    SicknessNotification = EffectClass.SicknessResult(type, health);
-                    sicknessNoti(name, SicknessNotification, type, newHealth);
-                    return newHealth;
-                }
-                else if (num == 3) {
-                    String type = "typhoid fever";
-                    newHealth = EffectClass.Sickness(type, health);
-                    SicknessNotification = EffectClass.SicknessResult(type, health);
-                    sicknessNoti(name, SicknessNotification, type, newHealth);
-                    return newHealth;
+
+        public void sicknesshandler(){
+            for (Person person: playerinventory.getPeopleinparty()) {
+                Effect acted = person.randomsickness();
+                if (acted!=null){
+                    if (person.getHealth()>0)
+                        addnoti(person.getName()+" got sick with "+acted.sicknessName()+".");
+
+                } else if (acted == null) {
+                    Random rand = new Random();
+                    if (rand.nextInt(5)==3){
+                        person.increasehealth(5);
+                        if (person.getHealth()==40&&person.getEffets().size()>0){
+                            addnoti(person.getName()+" recovered from "+person.getEffets().get(0).sicknessName()+".");
+                            person.removeEffect(0);
+                        }
+                    }
                 }
             }
-            else { return health; }
-        return health;
-    }
+            checkfordead();
+
+        }
 
         public int sicknessRecovery(String name, int health) {
             if (health != 40) {
@@ -418,9 +401,20 @@ public class Map {
     }
     //Iterate through players and remove anyone that should be dead, just slap anywhere that may need it
     void checkfordead(){
+            //health below or at 0
+            //3 sicknesses
+            ArrayList<Person> deadRunner=new ArrayList<>();
             for(Person person:playerinventory.getPeopleinparty()){
                 if (person.getHealth()==0)
+                    deadRunner.add(person);
+                if (person.getEffets().size()>=3)
+                    deadRunner.add(person);
+            }
+
+            if(!deadRunner.isEmpty()) {
+                for (Person person : deadRunner) {
                     playerinventory.getPeopleinparty().remove(person);
+                }
             }
     }
 }

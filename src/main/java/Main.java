@@ -13,6 +13,7 @@ public class Main {
 
 //Needs:
     //help
+    //Sicknesses
     public static void main(String[] args) {
         party = new ArrayList<Person>();
 
@@ -137,14 +138,14 @@ public class Main {
         ArrayList<Location> runnerLocations = new ArrayList<Location>();
 
         //Independence information
-        runnerLocations.add(new Location(0,"Independence",new Store("Independence Wholesale", inventory), 1));
+        runnerLocations.add(new Location(0,"Independence",new Store("Independence Wholesale", inventory,0), 1));
 
         //KR crossing information
         Event krCrossing = new Event(Event.EventType.RIVERCROSSING,1450.848,true);
         runnerLocations.add(new Location(102, "Kansas River crossing",krCrossing));
 
         //BBR crossing information
-        Event bbrCrossing = new Event(Event.EventType.RIVERCROSSING);
+        Event bbrCrossing = new Event(Event.EventType.RIVERCROSSING,2072.64,false);
         runnerLocations.add(new Location(184,"Big Blue River Crossing",bbrCrossing));
 
         //Fort Kearny information
@@ -294,16 +295,6 @@ public class Main {
                     }
 
                 //Person sickness handling
-                for (int i = 0; i < inventory.personcount(); i++) {
-                    inventory.getIndividual(i).setHealth(oregonTrail.RandomSickness(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
-                }
-
-                // Where the new sicknessRecovery method will be implemented (recovery every 5 days, could be changed later)
-                if ((oregonTrail.getDayNumber() % 5) == 0) {
-                    for (int i = 0; i < inventory.personcount(); i++) {
-                        inventory.getIndividual(i).setHealth(oregonTrail.sicknessRecovery(inventory.getIndividual(i).getName(), inventory.getIndividual(i).getHealth()));
-                    }
-                }
                 
                 // Check for random event
                 oregonTrail.RandomEvent();
