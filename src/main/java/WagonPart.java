@@ -1,6 +1,6 @@
 public class WagonPart extends Item{
     //Adds custom types of each item (controls behavior in standardized form)
-    public enum Type {Axle, Wheel,Tongue, Ox}   //yes Ox is part of a wagon, Fight me
+    public enum Type {Axle, Wheel,Tongue, Ox,Test}   //yes Ox is part of a wagon, Fight me
                                                 // - Schmeling
 
 
@@ -11,6 +11,10 @@ public class WagonPart extends Item{
     public WagonPart(Type type, String name, double weight){
         super(name, weight);
         this.type = type;
+    }
+
+    public Type getType() {
+        return type;
     }
 
 }

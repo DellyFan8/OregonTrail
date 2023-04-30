@@ -5,15 +5,14 @@ import java.util.*;
 import static java.lang.System.out;
 
 public class Main {
-
+//Every comment made out of rage should definitly be kept
     static Inventory inventory;
     static ArrayList<Person> party;
     static Scanner keyboard;
     static Map oregonTrail;
 
 //Needs:
-    //River crossings
-    //Career select
+    //help
     public static void main(String[] args) {
         party = new ArrayList<Person>();
 
@@ -335,8 +334,8 @@ public class Main {
         //insert chances and effects for crossing river, may need to be passed inventory
 
         Random rand = new Random();
-
-        out.println("You find yourself at "+eventLocation.getLocationName()+".");
+        String rivername = eventLocation.getLocationName();
+        out.println("You find yourself at "+rivername+".");
         out.println(returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())));
         int input;
         boolean crossed;
@@ -356,6 +355,8 @@ public class Main {
                 //region Fording river
                 case 1:
                     out.println("You ford the river ");
+
+
                     crossed=true;
                     break;
 
@@ -363,6 +364,25 @@ public class Main {
                     //endregion
                 //region Caulking river
                 case 2:
+                    if (keyboardyn("Are you sure you would like to Caulk your boat and float across")){
+
+                        //river height odds table
+                        if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<5){
+                            crossed=true;
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=5) {
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>6){
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9){
+
+                        }
+
+                    }
+                    else {
+                        break;
+                    }
+
+
                     out.println("You caulk your wagon and float across.");
                     crossed=true;
                     break;
@@ -370,7 +390,8 @@ public class Main {
                     //endregion
                 //region waiting by river
                 case 3:
-                    out.println("You wait a day by the river");
+                    out.println("You wait a day by the river.");
+                    oregonTrail.addnoti("You waited the day by the river to see if the conditions improve.");
                     oregonTrail.advanceDay();
                     returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease()));
                     crossed=false;
@@ -378,8 +399,17 @@ public class Main {
                     //endregion
                 //region Ferry
                 case 4:
-                    out.println("ferry");
-                    crossed=true;
+                    int cost = oregonTrail.getPlayerinventory().personcount()*10;
+                    if (keyboardyn("The ferry costs "+cost+" gold.\nDo you wish to cross?")){
+                        crossed=true;
+                        oregonTrail.addnoti("You wait your turn for the ferry");
+                        oregonTrail.advanceDay();
+                        oregonTrail.addnoti("You wait your turn for the ferry");
+                        oregonTrail.advanceDay();
+                        oregonTrail.addnoti("Today you ferried across the "+rivername+"river, costing "+cost+" gold and lost 3 days of time.");
+                        oregonTrail.advanceDay();
+                        oregonTrail.getPlayerinventory().takeDollars(cost);
+                    }
                     break;
                     //endregion
 
@@ -407,6 +437,9 @@ public class Main {
             output=output+ ((int)(riverheight%12)+" inches ");
         return (output+"deep.");
     }
+
+
+
 
 
 

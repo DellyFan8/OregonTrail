@@ -1,6 +1,7 @@
 public class Item {
 
     //Does not impact anything other than display text
+    //I utterly hate like 90% of this class.- A teammate.
     private final String name;
     //Item weight in pounds
     private final double weight;
@@ -23,7 +24,9 @@ public class Item {
     public void increaseQuantity(){
         quantity++;
     }
-    public void decreaseQuantity(){quantity--;}
+    public void decreaseQuantity(){
+        quantity--;
+    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;

@@ -1,6 +1,6 @@
 public class OtherItem extends Item{
     //Adds custom types of each item (controls behavior in standardized form)
-    public enum Type {}
+    public enum Type {BULLETS}
     private final Type type;
 
 

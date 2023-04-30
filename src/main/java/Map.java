@@ -41,12 +41,14 @@ public class Map {
         private int daytemp;
         private final int startnumber;
         private final ArrayList<String> notification = new ArrayList<>();
+        private Inventory playerinventory;
 
 
         public Map(ArrayList<Location> locations, Inventory inventory, int day) {
             this.locations = locations;
             this.daynumber=day;
             this.startnumber=day;
+            this.playerinventory = inventory;
             weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather1.csv")));
             weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather2.csv")));
             weatherregion.add(new WeatherRegion(new File("src\\main\\resources\\weather3.csv")));
@@ -55,7 +57,11 @@ public class Map {
 
         }
 
-        public int distanceto(Location target){
+    public Inventory getPlayerinventory() {
+        return playerinventory;
+    }
+
+    public int distanceto(Location target){
             return target.getMilesinfromstart()-playerdistance;
 
         }
@@ -393,4 +399,15 @@ public class Map {
                 else return stringname+"Snowy.";
             }
         }
+    //may eventually make a file to save scores to. Actually may literally make it rn because that sounds fun. unlike all this other stuff ive done
+    boolean checkforloss(){
+            //addmore ways to lose?
+            if (playerinventory.personcount()==0)
+                return true;
+
+
+
+
+            return false;
+    }
 }

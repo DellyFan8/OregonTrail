@@ -4,11 +4,22 @@ import java.util.Random;
 
 public class Inventory {
     //Stores all items for game
-    private ArrayList<Item> items;
+    private static ArrayList<Item> items;
     private ArrayList<Person> peopleinparty;
 
     //Stores group's money
     private double dollars;
+
+//    public static void main(String[] args){
+//        Inventory test = new Inventory(600);
+//        test.add(new WagonPart(WagonPart.Type.Wheel,"Wheel",0));
+//        test.add(new WagonPart(WagonPart.Type.Axle, "Axle",0));
+//        test.add(new WagonPart(WagonPart.Type.Axle, "Axle",0));
+//        test.add(new WagonPart(WagonPart.Type.Axle, "Axle",0));
+//        test.add(new Food(Food.Type.FOOD,"food",0));
+//        System.out.println(brokenWagonpart());
+//        System.out.println(test);
+//    }
 
     public Inventory(double dollars, ArrayList<Person> peopleinparty){
         this.peopleinparty = peopleinparty;
@@ -77,6 +88,9 @@ public class Inventory {
             if(x.getClass() == Food.class){
                 toReturn+=x.getName()+"\t"+((Food) x).getType()+"\t"+x.getQuantity()+"\n";
             }
+            if(x.getClass()==WagonPart.class){
+                toReturn+=x.getName()+"\t"+((WagonPart) x).getType()+"\t"+x.getQuantity()+"\n";
+            }
         }
 
         return toReturn;
@@ -93,22 +107,39 @@ public class Inventory {
     //breaks a wagon part
     public Item brokenWagonpart(){
         Random rand = new Random();
+        ArrayList<Item> runneritems = getitemtypes();
+        Item brokenitem= runneritems.get(rand.nextInt(runneritems.size()));
+        brokenitem.decreaseQuantity();
 
 
 
-        return null;
+
+        return brokenitem;
     }
 
 
     //this function will iterate through all items and return an array of all items of a certain type, Food
-    public ArrayList<Item> getitemtypes(){
+    public static ArrayList<Item> getitemtypes(){
+        ArrayList<Item> runner= new ArrayList<>();
         for (Item item:items) {
-            item.getClass();
+            if (item.getClass()==WagonPart.class){
+                runner.add(item);
+            }
         }
-        return null;
+        return runner;
     }
 
     public ArrayList<Item> getItems(){
         return items;
     }
+    public ArrayList<Item> getClassItem(Class cls){
+        ArrayList<Item> runner=new ArrayList<>();
+        for (Item item:items) {
+            if(item.getClass()==cls)
+                runner.add(item);
+        }
+        return runner;
+    }
+
 }
+

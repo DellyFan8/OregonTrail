@@ -16,7 +16,28 @@ public class Store {
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wagon Wheel",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Wagon Axle",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Wagon Tongue",20),4,25));
-        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Ox,"Ox",0),8,50));
+        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet case",5),30,10));
+
+
+    }
+
+    //for enabling stores to have different item count, cost is consistant for the store multi.
+    public Store(String name, Inventory inventory,int storenum){
+        this.name=name;
+        this.inventory = inventory;
+        storeItems = new ArrayList<StoreItem>();
+        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
+        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
+        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wagon Wheel",20),4,25));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Wagon Axle",20),4,25));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Wagon Tongue",20),4,25));
+        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet Case",5),30,10));
+
+        if (storenum==0)
+        {
+            storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Ox,"Ox", 0),8,60));
+        }
 
     }
 
