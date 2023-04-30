@@ -171,6 +171,12 @@ public class Map {
                 notification.remove(0);
             }
         }
+        public void foodconsumption(){
+            int people = playerinventory.getPeopleinparty().size();
+        }
+        public void autohunt(){
+
+        }
 
         //Get a notification from an index
         public String getnoti(int index){
@@ -409,5 +415,12 @@ public class Map {
 
 
             return false;
+    }
+    //Iterate through players and remove anyone that should be dead, just slap anywhere that may need it
+    void checkfordead(){
+            for(Person person:playerinventory.getPeopleinparty()){
+                if (person.getHealth()==0)
+                    playerinventory.getPeopleinparty().remove(person);
+            }
     }
 }

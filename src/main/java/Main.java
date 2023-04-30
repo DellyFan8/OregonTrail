@@ -151,8 +151,34 @@ public class Main {
         runnerLocations.add(new Location(319,"Fort Kearny",new Store("Koo Koo Kearney's", inventory), 1.25));
 
         //Ash Hallow information
-        Event ashHallow = new Event(Event.EventType.ENDOFPROTYPE);
-        runnerLocations.add(new Location(504,"Ash Hallow", ashHallow));
+        runnerLocations.add(new Location(504,"Ash Hallow"));
+
+        //Chimney rock information
+        runnerLocations.add(new Location(554,"Chimney Rock"));
+
+        //Scotts Bluff
+        runnerLocations.add(new Location(596,"Scotts Bluff"));
+
+        //Registar Cliff
+        runnerLocations.add(new Location(658,"Register Cliff"));
+
+        //Fort Laramie
+        runnerLocations.add(new Location(750,"Fort Laramie",new Store("Laramie's Store", inventory), 1.5));
+
+        //Independence Rock
+        runnerLocations.add(new Location(815,"Independence Rock"));
+
+        //South Pass
+        runnerLocations.add(new Location(914,"South Pass"));
+
+        //Fort Bridger
+        //runnerLocations.add(new Location(1026,"Fort Bridger",new Store("Bridger's Store", inventory), 1.75));
+
+        //Green River crossing
+        //runnerLocations.add(new Location(989,"Green River crossing"))
+
+
+
         //endregion
 
         //Declare Oregon Trail Map
@@ -351,10 +377,31 @@ public class Main {
             //endregion
             //Switch based off of route of crossing river
             switch (input){
-
+//Needs:
+    //odds of loosing items upon crossing
                 //region Fording river
                 case 1:
-                    out.println("You ford the river ");
+                    if (keyboardyn("Are you sure you would like to ford the river?")){
+
+                        //river height odds table
+                        if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<3){
+
+                            crossed=true;
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>5) {
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>4) {
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=3) {
+
+                        }
+
+
+
+                    }
+                    else {
+                        break;
+                    }
+
 
 
                     crossed=true;
@@ -368,12 +415,13 @@ public class Main {
 
                         //river height odds table
                         if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<5){
+
                             crossed=true;
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9) {
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>7) {
+
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=5) {
-
-                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>6){
-
-                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9){
 
                         }
 
