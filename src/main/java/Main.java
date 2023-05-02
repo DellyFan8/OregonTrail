@@ -239,8 +239,8 @@ public class Main {
             //region Menu
             boolean menu = true;
             while(menu){
-                out.println("1.) View Party\n2.) View Inventory\n3.) Change Pace and Rations");
-                int optionNum = 4;
+                out.println("1.) View Party\n2.) View Inventory\n3.) Change Pace and Rations\n4.) Go Hunting");
+                int optionNum = 5;
                 if (oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0 && oregonTrail.closestloc().hasStore()) {
                     out.println(optionNum + ".) Go into town");
                     townOption = optionNum;
@@ -259,8 +259,10 @@ public class Main {
                     oregonTrail.setRations(intinput("Current Rations: "+oregonTrail.getRations()+"\nSet rations (1 to 5, 1 being low rations):",1,5));
                     oregonTrail.setPace(intinput("Current Pace: "+oregonTrail.getPace()+"\nSet pace (1 to 5, 1 being low Pace):",1,5));
 
-                }
-                else if (option < 1 || option > optionNum)
+                } else if (option==4) {
+                    oregonTrail.hunt();
+
+                } else if (option < 1 || option > optionNum)
                     out.println("Please select something that is an option");
 
                 else if (option == 2)
@@ -351,6 +353,9 @@ public class Main {
         //insert chances and effects for crossing river, may need to be passed inventory
 
         Random rand = new Random();
+
+
+        //River name included crossing, should eventually fix
         String rivername = eventLocation.getLocationName();
         out.println("You find yourself at "+rivername+".");
         out.println(returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())));
@@ -377,12 +382,16 @@ public class Main {
                         //river height odds table
                         if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<3){
 
+
                             crossed=true;
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>5) {
 
+
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>4) {
 
+
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=3) {
+
 
                         }
 

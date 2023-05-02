@@ -37,9 +37,9 @@ public class Person {
         Random rand = new Random();
 
         //this num can be adjusted to change how common these get to be
-        if(rand.nextInt(20+(5-rations))>16){
+        if(rand.nextInt(20+(5-rations))>17){
             Effect sickness=null;
-            switch (rand.nextInt(4)){
+            switch (rand.nextInt(5)){
                 case 1:
                     sickness = new Effect(Effect.Type.Cholera);
                     this.health-=20;
@@ -54,6 +54,10 @@ public class Person {
                     break;
                 case 4:
                     sickness = new Effect(Effect.Type.Dysentery);
+                    this.health-=20;
+                    break;
+                case 5:
+                    sickness=new Effect(Effect.Type.Prairiefever);
                     this.health-=20;
                     break;
 

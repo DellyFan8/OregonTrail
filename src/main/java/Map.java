@@ -177,11 +177,11 @@ public class Map {
                 notification.remove(0);
             }
         }
-        public void autohunt(){
-            int lowerbound= 100;
-            if(playerinventory.getRations()<=lowerbound){
-
-            }
+        public void hunt(){
+            Random rand = new Random();
+            int rationsadd = rand.nextInt(30)+20;
+            playerinventory.add(new Food(Food.Type.RATIONS,"Rations",rationsadd,false));
+            addnoti(rationsadd+" Rations were added to Inventory");
 
         }
 
@@ -189,7 +189,6 @@ public class Map {
         public String getnoti(int index){
             return notification.get(index);
         }
-
         public int getDayNumber(){
             return daynumber;
         }
@@ -251,7 +250,7 @@ public class Map {
         if (notification.size()!=0){
                for (int i = 0; i <notification.size() ; i++) {
                    out.println(getnoti(i));
-           }
+               }
            }
 
            clearnoti();
@@ -420,6 +419,7 @@ public class Map {
             if(!deadRunner.isEmpty()) {
                 for (Person person : deadRunner) {
                     playerinventory.getPeopleinparty().remove(person);
+                    addnoti(person.getName()+" has died from "+person.getEffets().get(0).sicknessName());
                 }
             }
     }
@@ -428,7 +428,6 @@ public class Map {
             //Can adjust this formula
             consumedfoobar+= (int) (playerinventory.personcount()*(rations*3+5));
             playerinventory.removeItems(new Food(Food.Type.RATIONS,"rations",consumedfoobar,false));
-            autohunt();
 
 
     }

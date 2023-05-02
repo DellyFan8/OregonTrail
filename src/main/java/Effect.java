@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Effect {
-    enum Type {Dysentery, Cholera, Measles, Tyhoidfever}
+    enum Type {Dysentery, Cholera, Measles, Tyhoidfever,Prairiefever}
     Type effecttype;
 
     public Effect(Type type){
@@ -17,8 +17,10 @@ public class Effect {
             return "Dysentery";
         }if (effecttype==Type.Cholera){
             return "Cholera";
-        }if (effecttype==Type.Measles){
+        }if (effecttype==Type.Measles) {
             return "Measles";
+        }if (effecttype==Type.Prairiefever){
+            return "Prairie fever";
         }else
             return "Typhoid fever";
     }
