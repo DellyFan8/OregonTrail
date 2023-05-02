@@ -109,6 +109,8 @@ public class Map {
             int distanceToNextLocation = distanceto(closestloc());
             setRainandTemp();
             sicknesshandler();
+            checkforloss();
+            consumefood();
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 playerdistance+=distanceToNextLocation;
                 daynumber++;
@@ -130,6 +132,8 @@ public class Map {
             int distanceToNextLocation = distanceto(closestloc());
             setRainandTemp();
             sicknesshandler();
+            checkforloss();
+            consumefood();
             if(distanceToNextLocation<dist && distanceToNextLocation!= 0){
                 daynumber++;
 
@@ -173,10 +177,11 @@ public class Map {
                 notification.remove(0);
             }
         }
-        public void foodconsumption(){
-            int people = playerinventory.getPeopleinparty().size();
-        }
         public void autohunt(){
+            int lowerbound= 100;
+            if(playerinventory.getRations()<=lowerbound){
+
+            }
 
         }
 
@@ -274,7 +279,7 @@ public class Map {
 
         public void sicknesshandler(){
             for (Person person: playerinventory.getPeopleinparty()) {
-                Effect acted = person.randomsickness();
+                Effect acted = person.randomsickness(this.rations);
                 if (acted!=null){
                     if (person.getHealth()>0)
                         addnoti(person.getName()+" got sick with "+acted.sicknessName()+".");
@@ -391,8 +396,9 @@ public class Map {
     //may eventually make a file to save scores to. Actually may literally make it rn because that sounds fun. unlike all this other stuff ive done
     boolean checkforloss(){
             //addmore ways to lose?
-            if (playerinventory.personcount()==0)
-                return true;
+            if (playerinventory.personcount()==0){
+                endGame();
+                return true;}
 
 
 
@@ -415,6 +421,21 @@ public class Map {
                 for (Person person : deadRunner) {
                     playerinventory.getPeopleinparty().remove(person);
                 }
+            }
+    }
+    public void consumefood(){
+            int consumedfoobar = 0;
+            //Can adjust this formula
+            consumedfoobar+= (int) (playerinventory.personcount()*(rations*3+5));
+            playerinventory.removeItems(new Food(Food.Type.RATIONS,"rations",consumedfoobar,false));
+            autohunt();
+
+
+    }
+
+    public void endGame(){
+            if (playerinventory.personcount()==0){
+                out.println("You lost the game");
             }
     }
 }

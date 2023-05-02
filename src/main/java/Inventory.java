@@ -17,7 +17,6 @@ public class Inventory {
 //        test.add(new WagonPart(WagonPart.Type.Axle, "Axle",0));
 //        test.add(new WagonPart(WagonPart.Type.Axle, "Axle",0));
 //        test.add(new Food(Food.Type.FOOD,"food",0));
-//        System.out.println(brokenWagonpart());
 //        System.out.println(test);
 //    }
 
@@ -56,7 +55,11 @@ public class Inventory {
 
     //Loops through inventory and adds up weight of items (NEEDS IMPLEMENTED)
     public double getWeight(){
-        return -1;
+        double weight=0;
+        for (Item item:items){
+            weight+=item.getWeight();
+        }
+        return weight;
     }
 
     public void setItems(ArrayList<Item> items) {
@@ -128,6 +131,13 @@ public class Inventory {
         }
         return runner;
     }
+    public int getRations(){
+        for (Item item:items){
+            if (item.getClass()==Food.class)
+                return ((Food)item).getQuantity();
+        }
+        return 0;
+    }
 
     public ArrayList<Item> getItems(){
         return items;
@@ -139,6 +149,19 @@ public class Inventory {
                 runner.add(item);
         }
         return runner;
+    }
+    public void removeItems(Item itemtoremove){
+        for (Item item:items) {
+            if (itemtoremove.getClass()==WagonPart.class&&item.getClass()==itemtoremove.getClass())
+                ((WagonPart)item).removeItem(((WagonPart) itemtoremove));
+            if (itemtoremove.getClass()==Food.class&&item.getClass()==itemtoremove.getClass())
+                ((Food)item).removeItem(((Food) itemtoremove));
+            if (itemtoremove.getClass()==Medicine.class&&item.getClass()==itemtoremove.getClass())
+                ;
+
+        }
+
+
     }
 
 }

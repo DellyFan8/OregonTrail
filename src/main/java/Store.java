@@ -10,12 +10,12 @@ public class Store {
         this.name=name;
         this.inventory = inventory;
         storeItems = new ArrayList<StoreItem>();
-        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
-        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
-        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
+//        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
+//        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
+//        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wagon Wheel",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Wagon Axle",20),4,25));
-        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Wagon Tongue",20),4,25));
+        storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"WagonTongue",20),4,25));
         storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet case",5),30,10));
 
 
@@ -26,13 +26,15 @@ public class Store {
         this.name=name;
         this.inventory = inventory;
         storeItems = new ArrayList<StoreItem>();
-        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
-        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
-        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
+        //Simplifying food to just rations
+        storeItems.add(new StoreItem(new Food(Food.Type.RATIONS,"Rations",5),200, 1));
+//        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
+//        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
+//        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wheel",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Axle",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Tongue",20),4,25));
-        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullet",5),30,10));
+        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullets",5),30,10));
 
         if (storenum==0)
         {

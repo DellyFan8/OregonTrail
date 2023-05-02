@@ -27,17 +27,17 @@ public class Person {
         this.health= runnerhealth;
     }
     public void increasehealth(int health){
-        if (this.health>35)this.health+=health;
+        if (this.health<35)this.health+=health;
         else this.health=40;
     }
 
 
     //currently suffers from duplicate Sicknesses
-    public Effect randomsickness(){
+    public Effect randomsickness(int rations){
         Random rand = new Random();
 
         //this num can be adjusted to change how common these get to be
-        if(rand.nextInt(20)>16){
+        if(rand.nextInt(20+(5-rations))>16){
             Effect sickness=null;
             switch (rand.nextInt(4)){
                 case 1:

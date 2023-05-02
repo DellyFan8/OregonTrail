@@ -13,8 +13,19 @@ public class WagonPart extends Item{
         this.type = type;
     }
 
+    public WagonPart( Type type,String name, int quantity,boolean literallytodesignate) {
+        super(name, quantity);
+        this.type = type;
+    }
+
     public Type getType() {
         return type;
+    }
+    public void removeItem(WagonPart part){
+        if(part.getType()==this.type){
+            addquantity(part.getQuantity()*-1);
+        }
+
     }
 
 }
