@@ -266,12 +266,16 @@ public class Map {
             advanceDay(false);
         }
         else if (randNum == 2) {
-            notification.add("Trail lost, you lose two days.");
+            notification.add("Wrong trail, you lose one day.");
             advanceDay(false);
         }
         else if (randNum >= 3 && randNum <= 4) {
             // thief comes during night (2.0%), call event class
             //eventually will steal items from your inventory
+        }
+        else if (randNum >= 5 && randNum <= 8) {
+            notification.add("You found wild berries! Plus 30 rations.");
+            playerinventory.add(new Food(Food.Type.RATIONS,"Rations",30,false));
         }
     }
 
@@ -426,7 +430,7 @@ public class Map {
     public void consumefood(){
             int consumedfoobar = 0;
             //Can adjust this formula
-            consumedfoobar+= (int) (playerinventory.personcount()*(rations*3+5));
+            consumedfoobar+= (int) (playerinventory.personcount()*(rations*2.5+3));
             playerinventory.removeItems(new Food(Food.Type.RATIONS,"rations",consumedfoobar,false));
 
 
