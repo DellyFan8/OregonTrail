@@ -8,5 +8,9 @@ public class OtherItem extends Item{
         super(name, weight);
         this.type = type;
     }
+    public OtherItem(Type type, String name, int quantity, boolean designate) {
+        super(name, quantity);
+        this.type = type;
+    }
 
 }

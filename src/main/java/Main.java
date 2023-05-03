@@ -238,6 +238,7 @@ public class Main {
 
             //region Menu
             boolean menu = true;
+            boolean dayhunted= false;
             while(menu){
                 out.println("1.) View Party\n2.) View Inventory\n3.) Change Pace and Rations\n4.) Go Hunting");
                 int optionNum = 5;
@@ -260,7 +261,11 @@ public class Main {
                     oregonTrail.setPace(intinput("Current Pace: "+oregonTrail.getPace()+"\nSet pace (1 to 5, 1 being low Pace):",1,5));
 
                 } else if (option==4) {
-                    oregonTrail.hunt();
+                    if(!dayhunted)
+                        oregonTrail.hunt();
+                    else
+                        out.println("You cannot hunt again today.");
+                    dayhunted=true;
 
                 } else if (option < 1 || option > optionNum)
                     out.println("Please select something that is an option");
@@ -309,7 +314,7 @@ public class Main {
         }
     }
 
-    //takes in an string for a yes no reponse and returns bool
+    //takes in a string for a yes no reponse and returns bool
     static boolean keyboardyn(String output){
 
         out.println(output);
@@ -356,13 +361,57 @@ public class Main {
 
 
         //River name included crossing, should eventually fix
-        String rivername = eventLocation.getLocationName();
+        String rivername = eventLocation.getLocationName().substring(0,eventLocation.getLocationName().length()-9);
         out.println("You find yourself at "+rivername+".");
         out.println(returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())));
+
+        //For those whomst did not write this terrible function the following is an attempt to explain a bit of what is happening
+        //I would encourage folding the regions and NEVER LOOKING AT IT, just look at this explanation!
+        //I am very much aware that based on the fact that I feel the need to do this that this is a lot.
+        //But I don't know how much better I could do it. Thankfully all you need to do is call this function, and it
+        // should deal with itself! Also doesn't deal with having guides, but sh.
+            /*
+            Declaration of Variables
+
+            Do {                            Causes this to loop until the river has actually been crossed
+
+                Output and reading to take at river of action to take at river.
+
+                Switch{                     Switch statement over the input provided
+                    Case 1:                 This Case contains odds for fording the river based on river height
+                        if(){               This if and 3 subsequent else-if's determine what odds to take
+                        Switch():           Switch on a random number generator
+                            Case 1:
+                                Adds a random wagon part to the list of items to break
+
+                                lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                break;
+                            Case 2:         For those whom don't know when a case number is defined, It will fall
+                            Case 3:         to the next case and until it hits a break statement.
+                            Case 4:         This was used to easily shift the odds of different things happening.
+                                Adds a random amount of rations or bullets to the list of items to lose
+
+                                lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
+                                break;
+                            Default{}       Default case, often is the most common event to happen
+
+                            for(){}         Removes each item on the list from your inventory. Does not handle going
+                                            into the negatives. Also formats and adds the removal notification.
+
+                        }
+                    Case 2:                 This Case contains odds for floating across the river based on height
+                        The same logic as in the previous Case is mirrored here.
+                    Case 3:                 This Case contains the logic for waiting by the river
+                    Case 4:                 This Case contains the logic for crossing the river via Ferry
+
+                }
+            }While;
+             */
+
+        //region River Chaos
         int input;
         boolean crossed;
         do {
-
 
             //region outputting river prompt based off of river type
             crossed=false;
@@ -374,56 +423,221 @@ public class Main {
             //Switch based off of route of crossing river
             switch (input){
 //Needs:
-    //odds of loosing items upon crossing
                 //region Fording river
                 case 1:
                     if (keyboardyn("Are you sure you would like to ford the river?")){
+                        //Chance of death??
+                        ArrayList<Item> lostbroken=new ArrayList<>();
+
 
                         //river height odds table
                         if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<3){
+                            switch (rand.nextInt(7)) {
+                                case 1:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                default:
+                                    oregonTrail.addnoti("You successfully forded the river");
 
-
+                            }
                             crossed=true;
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>5) {
-
+                            switch ((rand.nextInt(10))){
+                                case 1:
+                                case 4:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                                case 2:
+                                case 5:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                case 3:
+                                case 7:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
+                                    break;
+                                case 6:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                                default:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                            }
+                            crossed=true;
 
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>4) {
+                            switch (rand.nextInt(10)){
+                                //One other design option for these loops is to just create an array list of lost items and output those at the end.
 
+                                case 5:
+                                case 6:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                                case 7:
+                                    oregonTrail.addnoti("You successfully forded the "+rivername+" without losing any items");
+                                    break;
+                                default:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                            }
+                            crossed=true;
 
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=3) {
-
-
+                            switch (rand.nextInt(10)){
+                                case 1:
+                                case 2:
+                                case 3:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                case 4:
+                                case 5:
+                                case 6:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                                case 7:
+                                case 8:
+                                    oregonTrail.addnoti("You successfully forded the "+rivername+" without losing any items");
+                                    break;
+                                default:
+                                    //at some point make this all into one display
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                            }
+                            crossed=true;
                         }
-
+                        String lbOut=("You successfully forded the "+rivername);
+                        if (lostbroken != null) {
+                            lbOut=lbOut+" but lost";
+                            for (Item item :lostbroken) {
+                                lbOut=lbOut+" "+item.getQuantity()+" "+item.getName();
+                                oregonTrail.getPlayerinventory().removeItems(item);
+                            }
+                            lbOut=lbOut+".";
+                        }
+                        else {
+                            lbOut= lbOut+" without losing any items.";
+                        }
+                        oregonTrail.addnoti(lbOut);
 
 
                     }
                     else {
                         break;
                     }
-
-
-
-                    crossed=true;
+                    
                     break;
 
 
                     //endregion
                 //region Caulking river
+
                 case 2:
                     if (keyboardyn("Are you sure you would like to Caulk your boat and float across")){
-
+                                ArrayList<Item> lostbroken=new ArrayList<>();
                         //river height odds table
                         if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<5){
+                            switch (rand.nextInt(7)) {
+                                case 1:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                default:
+                                    oregonTrail.addnoti("You successfully crossed the river");
+                                    break;
 
+                            }
                             crossed=true;
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9) {
+                            switch ((rand.nextInt(10))){
+                                case 1:
+                                case 4:
+                                case 5:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                                case 2:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                case 3:
+                                case 7:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
+                                    break;
+                                case 6:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                                default:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                            }
+                            crossed=true;
 
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>7) {
+                            switch (rand.nextInt(10)){
+                                //One other design option for these loops is to just create an array list of lost items and output those at the end.
+                                case 1:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                case 2:
+                                case 3:
+                                case 4:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
+                                    break;
+                                case 5:
+                                case 6:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                                case 7:
+                                    oregonTrail.addnoti("You successfully forded the "+rivername+" without losing any items");
+                                    break;
+                                default:
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                            }
+                            crossed=true;
 
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>=5) {
-
+                            switch (rand.nextInt(10)){
+                                case 1:
+                                case 2:
+                                case 3:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                case 4:
+                                case 5:
+                                case 6:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
+                                    break;
+                                case 7:
+                                case 8:
+                                    oregonTrail.addnoti("You successfully forded the "+rivername+" without losing any items");
+                                    break;
+                                default:
+                                    //at some point make this all into one display
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
+                                    break;
+                            }
+                            crossed=true;
                         }
+                        String lbOut=("You successfully floated across the "+rivername);
+                        if (lostbroken != null) {
+                            lbOut=lbOut+" but lost";
+                            for (Item item :lostbroken) {
+                                lbOut=lbOut+" "+item.getQuantity()+" "+item.getName();
+                                oregonTrail.getPlayerinventory().removeItems(item);
+                            }
+                            lbOut=lbOut+".";
+                        }
+                        else {
+                            lbOut= lbOut+" without losing any items.";
+                        }
+                        oregonTrail.addnoti(lbOut);
 
                     }
                     else {
@@ -432,7 +646,6 @@ public class Main {
 
 
                     out.println("You caulk your wagon and float across.");
-                    crossed=true;
                     break;
 
                     //endregion
@@ -463,10 +676,14 @@ public class Main {
 
                 }
             }while(crossed==false);
+        //endregion
 
 
         return true;
         }
+
+
+
 
         //another terrible wait
         static void wait(int ms) {
@@ -485,12 +702,6 @@ public class Main {
             output=output+ ((int)(riverheight%12)+" inches ");
         return (output+"deep.");
     }
-
-
-
-
-
-
 
     }
 

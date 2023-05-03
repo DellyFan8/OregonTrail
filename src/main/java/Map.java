@@ -179,7 +179,7 @@ public class Map {
         }
         public void hunt(){
             Random rand = new Random();
-            int rationsadd = rand.nextInt(30)+20;
+            int rationsadd = rand.nextInt(50)+30;
             playerinventory.add(new Food(Food.Type.RATIONS,"Rations",rationsadd,false));
             addnoti(rationsadd+" Rations were added to Inventory");
 
@@ -202,6 +202,8 @@ public class Map {
             distancetravelled+=rand.nextInt(4);
         else if (this.rations<3)
             distancetravelled-=rand.nextInt(2);
+        if(playerinventory.getWeight()>1000)          //I have no clue what the expected weight will be
+            distancetravelled-=10;
         if(pace<=2)distancetravelled+=3;
         return (int)((distancetravelled* (.75+(.25)*rand.nextDouble())+2));
 

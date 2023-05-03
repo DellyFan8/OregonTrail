@@ -112,8 +112,6 @@ public class Inventory {
         Random rand = new Random();
         ArrayList<Item> runneritems = getitemtypes();
         Item brokenitem= runneritems.get(rand.nextInt(runneritems.size()));
-        brokenitem.decreaseQuantity();
-
 
 
 
