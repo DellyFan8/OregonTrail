@@ -1,17 +1,34 @@
 import java.util.Objects;
 
+
 public class Effect {
     enum Type {Dysentery, Cholera, Measles, Tyhoidfever,Prairiefever}
     Type effecttype;
 
+    /**
+     * Instantiates a new Effect.
+     *
+     * @param type the type of sickness
+     */
     public Effect(Type type){
         this.effecttype= type;
 
     }
 
+    /**
+     * Gets Type of the effect.
+     *
+     * @return the effecttype
+     */
     public Type getEffecttype() {
         return effecttype;
     }
+
+    /**
+     * Return the name of the given sickness.
+     *
+     * @return the name of the sickness
+     */
     public String sicknessName(){
         if (effecttype==Type.Dysentery){
             return "Dysentery";

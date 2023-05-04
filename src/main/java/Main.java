@@ -444,18 +444,18 @@ public class Main {
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>5) {
                             switch ((rand.nextInt(10))){
                                 case 1:
-                                case 4:
+                                case 2:
                                     lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
                                     lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+40),false));
                                     break;
-                                case 2:
-                                case 5:
-                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
                                 case 3:
-                                case 7:
+                                case 4:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                case 5:
+                                case 6:
                                     lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
                                     break;
-                                case 6:
+                                case 7:
                                     lostbroken.add(new OtherItem(OtherItem.Type.BULLETS, "Bullets",(rand.nextInt(20)+10),false));
                                     break;
                                 default:
@@ -469,7 +469,14 @@ public class Main {
                         } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>4) {
                             switch (rand.nextInt(10)){
                                 //One other design option for these loops is to just create an array list of lost items and output those at the end.
-
+                                case 1:
+                                    lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
+                                    break;
+                                case 2:
+                                case 3:
+                                case 4:
+                                    lostbroken.add(new Food(Food.Type.RATIONS,"Rations",(rand.nextInt(50)+30),false));
+                                    break;
                                 case 5:
                                 case 6:
                                     lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());

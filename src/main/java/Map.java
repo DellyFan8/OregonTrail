@@ -293,8 +293,8 @@ public class Map {
                     Random rand = new Random();
                     if (rand.nextInt(5)==3){
                         person.increasehealth(5);
-                        if (person.getHealth()==40&&person.getEffets().size()>0){
-                            addnoti(person.getName()+" recovered from "+person.getEffets().get(0).sicknessName()+".");
+                        if (person.getHealth()==40&&person.getEffects().size()>0){
+                            addnoti(person.getName()+" recovered from "+person.getEffects().get(0).sicknessName()+".");
                             person.removeEffect(0);
                         }
                     }
@@ -418,14 +418,14 @@ public class Map {
             for(Person person:playerinventory.getPeopleinparty()){
                 if (person.getHealth()==0)
                     deadRunner.add(person);
-                if (person.getEffets().size()>=3)
+                if (person.getEffects().size()>=3)
                     deadRunner.add(person);
             }
 
             if(!deadRunner.isEmpty()) {
                 for (Person person : deadRunner) {
                     playerinventory.getPeopleinparty().remove(person);
-                    addnoti(person.getName()+" has died from "+person.getEffets().get(0).sicknessName());
+                    addnoti(person.getName()+" has died from "+person.getEffects().get(0).sicknessName());
                 }
             }
     }

@@ -6,10 +6,18 @@ public class Person {
     private final String name;
     private int health;
     //health the max health to 30 we can change. sense make?
-    private ArrayList<Effect> effets=new ArrayList<>();
+    private ArrayList<Effect> effects =new ArrayList<>();
     public enum Gender{MALE, FEMALE}
     private final Gender gender;
 
+    /**
+     * Instantiates a new Person.
+     *
+     * @param age    the age of the person
+     * @param name   the name of the person
+     * @param health the health of the person
+     * @param gender the gender of the person
+     */
     public Person(int age, String name, int health, Gender gender) {
         this.age = age;
         this.name = name;
@@ -17,22 +25,50 @@ public class Person {
         this.gender = gender;
     }
 
+    /**
+     * Gets name of the person.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * Get the int health of the person
+     *
+     * @return the health of the person
+     */
     public int getHealth(){
         return this.health;
     }
+
+    /**
+     * Sets the health of a person.
+     *
+     * @param runnerhealth the health of the person
+     */
     public void setHealth(int runnerhealth){
         this.health= runnerhealth;
     }
+
+    /**
+     * increase the health of a person.
+     *
+     * @param health the amount to increase health by.
+     */
     public void increasehealth(int health){
         if (this.health<35)this.health+=health;
         else this.health=40;
     }
 
-
-    //currently suffers from duplicate Sicknesses
+    /**
+     * determines whether a person is going to get a sickness, and then randomly applies a sickness
+     *
+     * @param rations the current rations count
+     * @return the sickness effect
+     */
+//currently suffers from duplicate Sicknesses
     public Effect randomsickness(int rations){
         Random rand = new Random();
 
@@ -63,18 +99,29 @@ public class Person {
 
             }
             if (sickness!=null)
-                effets.add(sickness);
+                effects.add(sickness);
             return sickness;
 
         }
         return null;
     }
 
-    public ArrayList<Effect> getEffets() {
-        return effets;
+    /**
+     * Gets the effects that a person current has.
+     *
+     * @return the effects
+     */
+    public ArrayList<Effect> getEffects() {
+        return effects;
     }
+
+    /**
+     * Remove effect at given index.
+     *
+     * @param index the index
+     */
     public void removeEffect(int index){
-        effets.remove(index);
+        effects.remove(index);
     }
 
     @Override
@@ -83,7 +130,7 @@ public class Person {
                 "age=" + age +
                 ", name='" + name + '\'' +
                 ", health=" + health +
-                ", Effets=" + effets +
+                ", Effets=" + effects +
                 ", gender=" + gender +
                 '}'+"\n";
     }
