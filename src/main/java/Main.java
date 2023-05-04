@@ -1,5 +1,3 @@
-import org.apache.poi.ss.formula.atp.Switch;
-
 import java.util.*;
 
 import static java.lang.System.out;
@@ -170,13 +168,10 @@ public class Main {
         runnerLocations.add(new Location(815,"Independence Rock"));
 
         //South Pass
-        runnerLocations.add(new Location(914,"South Pass"));
+        Event split1=new Event(Event.EventType.SPLIT1);
+        runnerLocations.add(new Location(914,"South Pass",split1));
 
-        //Fort Bridger
-        //runnerLocations.add(new Location(1026,"Fort Bridger",new Store("Bridger's Store", inventory), 1.75));
 
-        //Green River crossing
-        //runnerLocations.add(new Location(989,"Green River crossing"))
 
 
 
@@ -257,8 +252,8 @@ public class Main {
                 if (option == 1)
                     out.println(party.toString());
                 else if (option==3) {
-                    oregonTrail.setRations(intinput("Current Rations: "+oregonTrail.getRations()+"\nSet rations (1 to 5, 1 being low rations):",1,5));
-                    oregonTrail.setPace(intinput("Current Pace: "+oregonTrail.getPace()+"\nSet pace (1 to 5, 1 being low Pace):",1,5));
+                    oregonTrail.setRations(intinput("Current Rations: "+oregonTrail.getRations()+"\nSet rations (1 to 5, 1 being low rations):", 5, 1));
+                    oregonTrail.setPace(intinput("Current Pace: "+oregonTrail.getPace()+"\nSet pace (1 to 5, 1 being low Pace):", 5, 1));
 
                 } else if (option==4) {
                     if(!dayhunted)
@@ -295,9 +290,11 @@ public class Main {
                 }
                     if (oregonTrail.closestloc().hasEvent()) {
                         if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
-                            if (riverEvent(oregonTrail.closestloc(),oregonTrail)) {
+                            if (riverEvent(oregonTrail.closestloc())) {
                             } else {
                             }
+                        } else if (oregonTrail.closestloc().getEvent().getEventType()== Event.EventType.SPLIT1 &&oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0) {
+                            splitHandeler(oregonTrail.closestloc());
                         }
                     }
 
@@ -340,7 +337,7 @@ public class Main {
         return answer;
 
     }
-    static int intinput(String output,int lowebound, int upperbound){
+    static int intinput(String output, int upperbound, int lowebound){
 
         Scanner keyboard = new Scanner(System.in);
         int answer;
@@ -354,7 +351,7 @@ public class Main {
 
 
     //deals with river crossings when called
-    static boolean riverEvent(Location eventLocation, Map oregonTrail){
+    static boolean riverEvent(Location eventLocation ){
         //insert chances and effects for crossing river, may need to be passed inventory
 
         Random rand = new Random();
@@ -535,7 +532,7 @@ public class Main {
                     else {
                         break;
                     }
-                    
+
                     break;
 
 
@@ -688,12 +685,66 @@ public class Main {
 
         return true;
         }
+    static void splitHandeler(Location eventLocation){
+        if (eventLocation.getEvent().getEventType()==Event.EventType.SPLIT1){
+            ArrayList<Location> runnerLocations=new ArrayList<>();
+            Event grCrossing = new Event(Event.EventType.RIVERCROSSING,5608.32 ,true);
+            runnerLocations.add(new Location(989,"Green River crossing",grCrossing));
+                switch (intinput("You come across a split in the road. From here you can either:\n 1.) Continue on the trail\n2.) Travel to Fort Bridger\n",2)) {
+                    case 2:
+                        //Fort Bridger
+                        runnerLocations.add(new Location(1026,"Fort Bridger",new Store("Bridger's Store", inventory), 1.75));
+                        break;
+                    default:
+                        break;
+                }
+            //soda springs
+            runnerLocations.add(new Location(1133,"Soda Springs"));
+            //fort hall
+            runnerLocations.add(new Location(1190,"Fort Hall",new Store("Hall's Store", inventory), 2));
+            //snake river
+            Event snCrossing = new Event(Event.EventType.RIVERCROSSING,1800,false);
+            runnerLocations.add(new Location(1372,"Snake river Crossing",snCrossing));
+            //Fort boise
+            runnerLocations.add(new Location(1486,"Fort Boise",new Store("Boise's Store", inventory),2.25));
+            //Blue Mountain
+            Event split2 = new Event(Event.EventType.SPLIT2);
+            runnerLocations.add(new Location(1642, "Blue mountain",split2));
+
+
+
+        } else if (eventLocation.getEvent().getEventType()== Event.EventType.SPLIT2) {
+            ArrayList<Location> runnerLocations=new ArrayList<>();
+            Event end= new Event(Event.EventType.END);
+            switch (intinput("You come across a split in the road. From here you can either:\n 1.) Continue on the trail\n2.) Travel to Fort Walla Walla\n",2)) {
+                case 1:
+                    //The dallas
+                    runnerLocations.add(new Location(1820,"The Dallas"));
+                    runnerLocations.add(new Location(2100,"The End",end));
+
+                    break;
+
+                case 2:
+                    //Fort Bridger
+                    runnerLocations.add(new Location(1743,"Fort Walla Walla",new Store("Wally's Store", inventory), 1.75));
+                    //The dallas
+                    runnerLocations.add(new Location(1923,"The Dallas"));
+                    runnerLocations.add(new Location(2203,"The End",end));
+
+                    break;
+                default:
+                    break;
+            }
 
 
 
 
-        //another terrible wait
-        static void wait(int ms) {
+        }
+
+
+    }
+    //another terrible wait
+    static void wait(int ms) {
         try
         {
             Thread.sleep(ms);

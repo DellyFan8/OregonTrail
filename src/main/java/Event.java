@@ -1,7 +1,9 @@
 public class Event {
 
-    public enum EventType{RIVERCROSSING,ENDOFPROTYPE,  XYZ}
+    public enum EventType{RIVERCROSSING,END,SPLIT1,SPLIT2}
     public EventType eventType;
+
+    //River stage in mm, because IDK why
     public Double riverStage;
     public int riverwidth;
     public boolean hasFerry;
@@ -21,6 +23,8 @@ public class Event {
         this.riverStage = riverStage;
         this.hasFerry= hasFerry;
     }
+
+
     public boolean isHasFerry(){return this.hasFerry;}
 
     /**
