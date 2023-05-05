@@ -288,13 +288,17 @@ public class Main {
                 } else {
                     out.println("Please select something that is an option");
                 }
-                    if (oregonTrail.closestloc().hasEvent()) {
+                    if (oregonTrail.closestloc().hasEvent()&&oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0) {
                         if (oregonTrail.closestloc().getEvent().getEventType() == Event.EventType.RIVERCROSSING && oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance()) == 0) {
                             if (riverEvent(oregonTrail.closestloc())) {
+                                oregonTrail.incdist();
                             } else {
                             }
-                        } else if (oregonTrail.closestloc().getEvent().getEventType()== Event.EventType.SPLIT1 &&oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0) {
+                        } else if ((oregonTrail.closestloc().getEvent().getEventType()== Event.EventType.SPLIT1||oregonTrail.closestloc().getEvent().getEventType()== Event.EventType.SPLIT2) &&oregonTrail.closestloc().distanceto(oregonTrail.getPlayerdistance())==0) {
                             splitHandeler(oregonTrail.closestloc());
+                        } else if (oregonTrail.closestloc().getEvent().getEventType()== Event.EventType.END) {
+                            oregonTrail.endGame();
+
                         }
                     }
 
@@ -543,7 +547,7 @@ public class Main {
                     if (keyboardyn("Are you sure you would like to Caulk your boat and float across")){
                                 ArrayList<Item> lostbroken=new ArrayList<>();
                         //river height odds table
-                        if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<5){
+                        if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12<5) {
                             switch (rand.nextInt(7)) {
                                 case 1:
                                     lostbroken.add(oregonTrail.getPlayerinventory().brokenWagonpart());
@@ -553,8 +557,11 @@ public class Main {
                                     break;
 
                             }
-                            crossed=true;
-                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9) {
+                            crossed = true;
+                        }else if(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>9){
+                            oregonTrail.endGame();
+
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>7) {
                             switch ((rand.nextInt(10))){
                                 case 1:
                                 case 4:
@@ -579,7 +586,7 @@ public class Main {
                             }
                             crossed=true;
 
-                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>7) {
+                        } else if (eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease())/12>6) {
                             switch (rand.nextInt(10)){
                                 //One other design option for these loops is to just create an array list of lost items and output those at the end.
                                 case 1:
@@ -630,11 +637,13 @@ public class Main {
                             crossed=true;
                         }
                         String lbOut=("You successfully floated across the "+rivername);
-                        if (lostbroken != null) {
+                        if (!lostbroken.isEmpty()) {
                             lbOut=lbOut+" but lost";
                             for (Item item :lostbroken) {
-                                lbOut=lbOut+" "+item.getQuantity()+" "+item.getName();
-                                oregonTrail.getPlayerinventory().removeItems(item);
+                                if (item!=null) {
+                                    lbOut = lbOut + " " + item.getQuantity() + " " + item.getName();
+                                    oregonTrail.getPlayerinventory().removeItems(item);
+                                }
                             }
                             lbOut=lbOut+".";
                         }
@@ -657,7 +666,7 @@ public class Main {
                 case 3:
                     out.println("You wait a day by the river.");
                     oregonTrail.addnoti("You waited the day by the river to see if the conditions improve.");
-                    oregonTrail.advanceDay();
+                    oregonTrail.advanceDay(false);
                     returnriver(eventLocation.getEvent().riverheight(oregonTrail.getWaterTableincrease()));
                     crossed=false;
                     break;
@@ -667,12 +676,10 @@ public class Main {
                     int cost = oregonTrail.getPlayerinventory().personcount()*10;
                     if (keyboardyn("The ferry costs "+cost+" gold.\nDo you wish to cross?")){
                         crossed=true;
-                        oregonTrail.addnoti("You wait your turn for the ferry");
-                        oregonTrail.advanceDay();
-                        oregonTrail.addnoti("You wait your turn for the ferry");
-                        oregonTrail.advanceDay();
-                        oregonTrail.addnoti("Today you ferried across the "+rivername+"river, costing "+cost+" gold and lost 3 days of time.");
-                        oregonTrail.advanceDay();
+                        oregonTrail.advanceDay(false);
+                        oregonTrail.advanceDay(false);
+                        oregonTrail.addnoti("Today you ferried across the "+rivername+", costing "+cost+" gold and lost 3 days of time.");
+                        oregonTrail.advanceDay(false);
                         oregonTrail.getPlayerinventory().takeDollars(cost);
                     }
                     break;
@@ -710,6 +717,10 @@ public class Main {
             //Blue Mountain
             Event split2 = new Event(Event.EventType.SPLIT2);
             runnerLocations.add(new Location(1642, "Blue mountain",split2));
+            for(Location loc:runnerLocations){
+                oregonTrail.addloc(loc);
+
+            }
 
 
 
@@ -734,6 +745,11 @@ public class Main {
                     break;
                 default:
                     break;
+
+            }
+            for(Location loc:runnerLocations){
+                oregonTrail.addloc(loc);
+
             }
 
 

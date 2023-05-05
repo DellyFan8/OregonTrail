@@ -73,7 +73,7 @@ public class Person {
         Random rand = new Random();
 
         //this num can be adjusted to change how common these get to be
-        if(rand.nextInt(20+(5-rations))>17){
+        if(rand.nextInt(20+(5-rations))>18){
             Effect sickness=null;
             switch (rand.nextInt(5)){
                 case 1:

@@ -111,11 +111,14 @@ public class Inventory {
     public Item brokenWagonpart(){
         Random rand = new Random();
         ArrayList<Item> runneritems = getitemtypes();
-        Item brokenitem= runneritems.get(rand.nextInt(runneritems.size()));
+        try {
+            Item brokenitem= runneritems.get(rand.nextInt(runneritems.size()));
+            return brokenitem;
+        } catch (Exception e) {
+            return null;
+        }
 
 
-
-        return brokenitem;
     }
 
 
@@ -133,6 +136,15 @@ public class Inventory {
         for (Item item:items){
             if (item.getClass()==Food.class)
                 return ((Food)item).getQuantity();
+        }
+        return 0;
+    }
+    public  int getBullets(){
+        for (Item item:items){
+            if (item.getClass()==OtherItem.class)
+                if (((OtherItem)item).getType()==OtherItem.Type.BULLETS){
+                    return item.getQuantity();
+                }
         }
         return 0;
     }

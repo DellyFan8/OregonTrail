@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class Weather {
 //Note: Rain data is in mm and temp is C.
     //could possibly use float
@@ -29,7 +31,7 @@ public class Weather {
             return 0;
         }
         else {
-            String rain= rand.nextInt((int) rainmax) +"."+ rand.nextInt(10);
+            String rain= rand.nextInt((int) abs(rainmax)+1) +"."+ rand.nextInt(10);
             return Double.parseDouble(rain);
 
         }

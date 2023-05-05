@@ -27,14 +27,14 @@ public class Store {
         this.inventory = inventory;
         storeItems = new ArrayList<StoreItem>();
         //Simplifying food to just rations
-        storeItems.add(new StoreItem(new Food(Food.Type.RATIONS,"Rations",5),200, 1));
+        storeItems.add(new StoreItem(new Food(Food.Type.RATIONS,"Rations",5),2000, 0.5));
 //        storeItems.add(new StoreItem(new Food(Food.Type.WATER, "Water", 2), 4, 24.50));
 //        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Beef", 50), 1, 43));
 //        storeItems.add(new StoreItem(new Food(Food.Type.FOOD, "Flour", 5), 2, 10.35));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Wheel,"Wheel",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Axle,"Axle",20),4,25));
         storeItems.add(new StoreItem(new WagonPart(WagonPart.Type.Tongue,"Tongue",20),4,25));
-        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullets",5),30,10));
+        storeItems.add(new StoreItem(new OtherItem(OtherItem.Type.BULLETS, "Bullets",5),300,1));
 
         if (storenum==0)
         {

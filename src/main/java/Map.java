@@ -33,7 +33,7 @@ public class Map {
         private int pace=3;
         private int rations=3;
         private final ArrayList<Location> locations;
-        private final ArrayList<WeatherRegion> weatherregion= new ArrayList<WeatherRegion>();
+        private final ArrayList<WeatherRegion> weatherregion= new ArrayList<>();
         private int playerdistance=0;
         private int waterTableincrease=0;
         private int daynumber;//to deal with weather events, possibly add days depending on what month is picked and then subtract that at the end when displaying how long of a trip you had.
@@ -178,10 +178,16 @@ public class Map {
             }
         }
         public void hunt(){
-            Random rand = new Random();
-            int rationsadd = rand.nextInt(50)+30;
-            playerinventory.add(new Food(Food.Type.RATIONS,"Rations",rationsadd,false));
-            addnoti(rationsadd+" Rations were added to Inventory");
+            if(playerinventory.getBullets()>0) {
+                Random rand = new Random();
+                int rationsadd = rand.nextInt(50) + 30;
+                playerinventory.removeItems(new OtherItem(OtherItem.Type.BULLETS, "bullets", 10,false));
+                playerinventory.add(new Food(Food.Type.RATIONS, "Rations", rationsadd, false));
+                addnoti(rationsadd + " Rations were added to Inventory");
+            }
+            else{
+                addnoti("No bullets to hunt with.");
+            }
 
         }
 
@@ -281,7 +287,9 @@ public class Map {
         }
     }
 
-
+    public void addloc(Location runner){
+            locations.add(runner);
+    }
         public void sicknesshandler(){
             for (Person person: playerinventory.getPeopleinparty()) {
                 Effect acted = person.randomsickness(this.rations);
@@ -291,7 +299,7 @@ public class Map {
 
                 } else if (acted == null) {
                     Random rand = new Random();
-                    if (rand.nextInt(5)==3){
+                    if (rand.nextInt(4)==2){
                         person.increasehealth(5);
                         if (person.getHealth()==40&&person.getEffects().size()>0){
                             addnoti(person.getName()+" recovered from "+person.getEffects().get(0).sicknessName()+".");
@@ -403,7 +411,12 @@ public class Map {
             //addmore ways to lose?
             if (playerinventory.personcount()==0){
                 endGame();
-                return true;}
+                return true;
+            }
+            if (playerinventory.getRations()<=-10) {
+                endGame();
+                return true;
+            }
 
 
 
@@ -432,8 +445,11 @@ public class Map {
     public void consumefood(){
             int consumedfoobar = 0;
             //Can adjust this formula
-            consumedfoobar+= (int) (playerinventory.personcount()*(rations*2.5+3));
+            consumedfoobar+= (int) (rations*5+3);
             playerinventory.removeItems(new Food(Food.Type.RATIONS,"rations",consumedfoobar,false));
+            if(playerinventory.getRations()<consumedfoobar*2){
+                addnoti("You are low on food.");
+            }
 
 
     }
@@ -442,5 +458,14 @@ public class Map {
             if (playerinventory.personcount()==0){
                 out.println("You lost the game");
             }
+            out.println("you lost the game");
+
+
     }
+
+    //Hopefully unbreak river
+    public void incdist(){
+            this.playerdistance++;
+    }
+
 }

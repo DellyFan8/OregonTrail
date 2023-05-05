@@ -13,4 +13,7 @@ public class OtherItem extends Item{
         this.type = type;
     }
 
+    public Type getType() {
+        return type;
+    }
 }
